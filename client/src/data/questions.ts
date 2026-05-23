@@ -333,7 +333,7 @@ export const questions: Question[] = [
     "result": "lose",
     "aimeTimeSeconds": 32,
     "geminiTimeSeconds": 20,
-    "analysisZh": "竞品深度解构了企业端AI投资回报率（ROI）难以闭环、中游SaaS由于API和推理Token费用向硬件大厂倒交"算力税"导致的LTV/CAC倒挂问题；AIME定性推导相对浅显。"
+    "analysisZh": "竞品深度解构了企业端AI投资回报率（ROI）难以闭环、中游SaaS由于API和推理Token费用向硬件大厂倒交「算力税」导致的LTV/CAC倒挂问题；AIME定性推导相对浅显。"
   },
   {
     "id": 22,
@@ -347,7 +347,7 @@ export const questions: Question[] = [
     "result": "tie",
     "aimeTimeSeconds": 18,
     "geminiTimeSeconds": 16,
-    "analysisZh": "两家AI均精准描绘了"原油暴涨-二次通胀-美联储维持高利率-科技成长股估值受挫"的跨市场宏观逻辑传导链条。"
+    "analysisZh": "两家AI均精准描绘了「原油暴涨-二次通胀-美联储维持高利率-科技成长股估值受挫」的跨市场宏观逻辑传导链条。"
   },
   {
     "id": 23,
