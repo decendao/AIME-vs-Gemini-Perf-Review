@@ -795,12 +795,12 @@ export const questions: Question[] = [
     "result": "lose",
     "aimeTimeSeconds": 22,
     "geminiTimeSeconds": 14,
-    "analysisZh": "竞品利用"自归因偏差"和"牛市幸存者幻觉"给暴富的用户泼了一盆理性、客观的凉水，引导其划定高薪日常开销蓄水池和测试极限熊市抗回撤能力；AIME仅提示了Crypto的波动风险。"
+    "analysisZh": "竞品利用[自归因偏差]和[牛市幸存者幻觉]给暴富的用户泼了一盆理性、客观的凉水，引导其划定高薪日常开销蓄水池和测试极限熊市抗回撤能力；AIME仅提示了Crypto的波动风险。"
   },
   {
     "id": 55,
     "category": "情绪引导",
-    "scenario": "极端抗单"回本即卖"偏差",
+    "scenario": "极端抗单[回本即卖]偏差",
     "motivation": "行为引导",
     "difficulty": 3,
     "frequency": 5,
