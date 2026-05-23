@@ -627,7 +627,7 @@ export const questions: Question[] = [
     "result": "tie",
     "aimeTimeSeconds": 18,
     "geminiTimeSeconds": 18,
-    "analysisZh": "针对FTC和欧盟对微软"非兼并式控制"反垄断调查进展，两家AI大模型均能通过实时Web搜索，完整、及时地梳理出当前的合规听证会争议细节。"
+    "analysisZh": "针对FTC和欧盟对微软「非兼并式控制」反垄断调查进展，两家AI大模型均能通过实时Web搜索，完整、及时地梳理出当前的合规听证会争议细节。"
   },
   {
     "id": 43,
@@ -697,7 +697,7 @@ export const questions: Question[] = [
     "result": "lose",
     "aimeTimeSeconds": 25,
     "geminiTimeSeconds": 15,
-    "analysisZh": "竞品用极其风趣、地道的欧美交易员语调和行为金融学原理剖析了社区的"幸存者偏差"，提出的"1%风险玩票预算"极具心理防守和实操指引价值；AIME的话术过于生硬和说教化。"
+    "analysisZh": "竞品用极其风趣、地道的欧美交易员语调和行为金融学原理剖析了社区的「幸存者偏差」，提出的「1%风险玩票预算」极具心理防守和实操指引价值；AIME的话术过于生硬和说教化。"
   },
   {
     "id": 48,
@@ -725,7 +725,7 @@ export const questions: Question[] = [
     "result": "tie",
     "aimeTimeSeconds": 20,
     "geminiTimeSeconds": 18,
-    "analysisZh": "针对黑天鹅大跌舆论，双方均能有效引导用户将注意力从Twitter大V的"毁灭末日叙事"中拉回，理性关注由于地缘风险引发的溢价率漂移以及组合内黄金/债券的对冲表现。"
+    "analysisZh": "针对黑天鹅大跌舆论，双方均能有效引导用户将注意力从Twitter大V的「毁灭末日叙事」中拉回，理性关注由于地缘风险引发的溢价率漂移以及组合内黄金/债券的对冲表现。"
   },
   {
     "id": 50,
@@ -753,7 +753,7 @@ export const questions: Question[] = [
     "result": "lose",
     "aimeTimeSeconds": 20,
     "geminiTimeSeconds": 12,
-    "analysisZh": "针对错失大涨后的强烈自责与亏损厌恶，竞品完美重构了用户的"机会成本认知"，引导其将踏空视作无痛的市场实验，提供了极佳的心理重建逻辑；AIME的安慰显得极为敷衍和机械。"
+    "analysisZh": "针对错失大涨后的强烈自责与亏损厌恶，竞品完美重构了用户的「机会成本认知」，引导其将踏空视作无痛的市场实验，提供了极佳的心理重建逻辑；AIME的安慰显得极为敷衍和机械。"
   },
   {
     "id": 52,
@@ -767,7 +767,7 @@ export const questions: Question[] = [
     "result": "tie",
     "aimeTimeSeconds": 15,
     "geminiTimeSeconds": 12,
-    "analysisZh": "双方均极具讽刺意味而又科学地拆解了TikTok大师的"幸存者偏差"，利用概率统计模型当头棒喝，证明了在0DTE期权高频损耗下长期取得该复合收益率在数学上的几乎不可能。"
+    "analysisZh": "双方均极具讽刺意味而又科学地拆解了TikTok大师的「幸存者偏差」，利用概率统计模型当头棒喝，证明了在0DTE期权高频损耗下长期取得该复合收益率在数学上的几乎不可能。"
   },
   {
     "id": 53,
@@ -809,7 +809,7 @@ export const questions: Question[] = [
     "result": "win",
     "aimeTimeSeconds": 25,
     "geminiTimeSeconds": 35,
-    "analysisZh": "AIME除了提供理论上关于"沉没成本谬误"和"亏损厌恶（Loss Aversion）"的纠偏，还能一键生成该低价值垃圾股最新的长期技术下行趋势图，用数理事实强行击碎用户的心理幻觉；竞品仅能提供定性规劝。"
+    "analysisZh": "AIME除了提供理论上关于「沉没成本谬误」和「亏损厌恶（Loss Aversion）」的纠偏，还能一键生成该低价值垃圾股最新的长期技术下行趋势图，用数理事实强行击碎用户的心理幻觉；竞品仅能提供定性规劝。"
   },
   {
     "id": 56,
@@ -823,7 +823,7 @@ export const questions: Question[] = [
     "result": "tie",
     "aimeTimeSeconds": 15,
     "geminiTimeSeconds": 15,
-    "analysisZh": "针对4.5%存款收益带来的"现金拖累（Cash Drag）"内疚感，双方均给出了极佳的资产保值心态安抚，重申了在市场高估值区间高流动性现金仓位的战术防御价值。"
+    "analysisZh": "针对4.5%存款收益带来的「现金拖累（Cash Drag）」内疚感，双方均给出了极佳的资产保值心态安抚，重申了在市场高估值区间高流动性现金仓位的战术防御价值。"
   },
   {
     "id": 57,
@@ -837,7 +837,7 @@ export const questions: Question[] = [
     "result": "win",
     "aimeTimeSeconds": 24,
     "geminiTimeSeconds": 32,
-    "analysisZh": "AIME精准提取了AInvest底层数据库中关于台积电/特斯拉最新的全网空头持仓（Short Interest）变化和华尔街大空头最具杀伤力的定量"Bear Case"财务减值数据，打破多头确认偏误；竞品空头推论较为通用。"
+    "analysisZh": "AIME精准提取了AInvest底层数据库中关于台积电/特斯拉最新的全网空头持仓（Short Interest）变化和华尔街大空头最具杀伤力的定量「Bear Case」财务减值数据，打破多头确认偏误；竞品空头推论较为通用。"
   },
   {
     "id": 58,
