@@ -146,7 +146,7 @@ export default function Persona() {
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
           {t(
-            "欧美（北美及西欧）金融市场零售投资者（Retail Investors/Traders）的行为特征、工具偏好和核心需求",
+            "欧美散户投资者的行为特征、工具偏好和核心需求；本次评测的 58 个问题均基于上述用户画像设计，覆盖欧美散户在日常投资中的典型场景与高频需求，旨在检验 AIME 与 Gemini 3.5 Flash 在服务该类用户时的实际表现差异。",
             "Behavioral characteristics, tool preferences and core needs of retail investors in Western (North American & Western European) financial markets"
           )}
         </p>
