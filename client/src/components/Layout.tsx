@@ -8,11 +8,12 @@ interface LayoutProps {
 }
 
 const NAV_ITEMS = [
+  { path: "/", labelZh: "评测概览", labelEn: "Overview", icon: BarChart3 },
   { path: "/persona", labelZh: "用户画像", labelEn: "Persona", icon: User },
   { path: "/methodology", labelZh: "设计思路", labelEn: "Methodology", icon: Compass },
   { path: "/details", labelZh: "问题列表", labelEn: "Questions", icon: List },
   { path: "/comparison", labelZh: "对比结果明细", labelEn: "Comparison Details", icon: FileText },
-  { path: "/", labelZh: "评测概览&结论", labelEn: "Overview & Conclusion", icon: BarChart3 },
+  
 ];
 
 export default function Layout({ children }: LayoutProps) {
