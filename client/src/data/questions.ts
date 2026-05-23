@@ -814,7 +814,7 @@ export const questions: Question[] = [
   {
     "id": 56,
     "category": "情绪引导",
-    "scenario": "持有现金的"踏空焦虑"",
+    "scenario": "持有现金的踏空焦虑",
     "motivation": "行为引导",
     "difficulty": 2,
     "frequency": 5,
