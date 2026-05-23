@@ -1,0 +1,9 @@
+# Vercel ignore - exclude server & build artifacts
+server/
+node_modules/
+dist/
+.manus-logs/
+*.log
+.env
+.env.local
+.env.production
