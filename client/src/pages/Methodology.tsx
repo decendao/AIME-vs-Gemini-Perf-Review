@@ -145,11 +145,25 @@ export default function Methodology() {
         </div>
       </div>
       
+
+     
+      {/* ================================================================ */}
+      {/* Section 3: 双向解构坐标系 */}
+      {/* ================================================================ */}
+
+      
+      <div>
+        <SectionHeader
+          number="2"
+          title={t("4大底层需求维度", "Dual Deconstruction: User Empathy (EQ) vs. Quantitative Rigor (IQ)")}
+          color="violet"
+        />
+
  {/* 4 Motivation Mapping */}
       <div className="mt-8">
         <p className="text-xs text-muted-foreground mb-4">
           {t(
-            "将散户的交易痛点和心理弱点，精准映射到 4 大底层需求动机中：",
+            "将散户的交易痛点和心理弱点，精准映射到 4 大问题分类中：",
             "Precisely mapping retail traders' pain points and psychological weaknesses to 4 fundamental need motivations:"
           )}
         </p>
@@ -174,8 +188,25 @@ export default function Methodology() {
           <MotivationCard
             icon={<Brain className="w-5 h-5" />}
             color="amber"
-            title={lang === "zh" ? "定性 & 定量分析" : "Qualitative & Quantitative Analysis"}
+            title={lang === "zh" ? "模拟情景 & 金融计算" : "Qualitative & Quantitative Analysis"}
             subtitle="Qualitative & Quantitative Logic"
+            biases={
+              lang === "zh"
+                ? ["假设性问题", "对未来的情景推演-原油未来3个月的价格走势"]
+                : ["Hypothetical questions", "Future scenario projection - crude oil 3-month outlook"]
+              
+            }
+            description={
+              lang === "zh"
+                ? "考察 Agent 能否对于数据新闻的分析和理解能力，同时是否能突破用户的确认偏误，提供多元视角的定量分析，避免只讲用户想听的故事。"
+                : "Tests the Agent's ability to analyze data and news, break through confirmation bias, and provide multi-perspective qualitative and quantitative analysis."
+            }
+          />
+          <MotivationCard
+            icon={<BarChart3 className="w-5 h-5" />}
+            color="blue"
+            title={lang === "zh" ? "定性分析&逻辑推演" : "Scenario Projection"}
+            subtitle="Scenario Projection"
             biases={
               lang === "zh"
                 ? ["基于已有数据和新闻", "财报解读"]
@@ -183,23 +214,7 @@ export default function Methodology() {
             }
             description={
               lang === "zh"
-                ? "考察 Agent 能否对于数据新闻的分析和理解能力，同时是否能突破用户的确认偏误，提供多元视角的定性定量分析，避免只讲用户想听的故事。"
-                : "Tests the Agent's ability to analyze data and news, break through confirmation bias, and provide multi-perspective qualitative and quantitative analysis."
-            }
-          />
-          <MotivationCard
-            icon={<BarChart3 className="w-5 h-5" />}
-            color="blue"
-            title={lang === "zh" ? "推演预测能力" : "Scenario Projection"}
-            subtitle="Scenario Projection"
-            biases={
-              lang === "zh"
-                ? ["假设性问题", "对未来的情景推演-原油未来3个月的价格走势"]
-                : ["Hypothetical questions", "Future scenario projection - crude oil 3-month outlook"]
-            }
-            description={
-              lang === "zh"
-                ? "考察 Agent 能否基于已知的信息对未来的推演能力；用基于概率的情景分析给用户做出综合客观的推演分析，并避免给出具体的带有偏向性的建议，注意法律合规边界，做出风险提示。"
+                ? "考察 Agent 能否基于已知的信息对特定问题的分析逻辑能力；用基于概率的情景分析给用户做出综合客观的推演分析，并避免给出具体的带有偏向性的建议，注意法律合规边界，做出风险提示。"
                 : "Tests the Agent's ability to project future scenarios based on known information, using probability-based scenario analysis while avoiding biased recommendations and maintaining legal compliance with risk warnings."
             }
           />
@@ -221,160 +236,10 @@ export default function Methodology() {
           />
         </div>
       </div>
-     
-      {/* ================================================================ */}
-      {/* Section 3: 双向解构坐标系 */}
-      {/* ================================================================ */}
-
+    </div> 
+        
+       
       
---
-      <div>
-        <SectionHeader
-          number="2"
-          title={t("4大底层需求维度", "Dual Deconstruction: User Empathy (EQ) vs. Quantitative Rigor (IQ)")}
-          color="violet"
-        />
-
-        {/* Coordinate System Visualization */}
-        <div className="bg-card rounded-xl border border-border p-6 shadow-sm mt-4">
-          <div className="relative w-full max-w-xl mx-auto aspect-square max-h-[360px]">
-            {/* Y Axis */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-300 -translate-x-1/2" />
-            {/* X Axis */}
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-300 -translate-y-1/2" />
-
-            {/* Y Arrow */}
-            <div className="absolute left-1/2 top-2 -translate-x-1/2 text-center">
-              <div className="text-xs font-bold text-blue-700">
-                {t("高金融硬核度 (IQ)", "High Quant Rigor (IQ)")}
-              </div>
-              <div className="text-[10px] text-muted-foreground mt-0.5">
-                DCF, Greeks, MPT
-              </div>
-            </div>
-
-            {/* Y Bottom */}
-            <div className="absolute left-1/2 bottom-2 -translate-x-1/2 text-center">
-              <div className="text-[10px] text-muted-foreground mb-0.5">
-                {t("基础问答", "Basic Q&A")}
-              </div>
-              <div className="text-xs font-bold text-slate-400">
-                {t("低金融硬核度 (IQ)", "Low Quant Rigor (IQ)")}
-              </div>
-            </div>
-
-            {/* X Left */}
-            <div className="absolute top-1/2 left-2 -translate-y-1/2">
-              <div className="text-xs font-bold text-slate-400">
-                {t("低 EQ", "Low EQ")}
-              </div>
-            </div>
-
-            {/* X Right */}
-            <div className="absolute top-1/2 right-2 -translate-y-1/2 text-right">
-              <div className="text-xs font-bold text-rose-600">
-                {t("高亲和理解力 (EQ)", "High Empathy (EQ)")}
-              </div>
-              <div className="text-[10px] text-muted-foreground">
-                {t("情绪共情, 行为阻断", "Emotional Empathy, Behavioral Blocking")}
-              </div>
-            </div>
-
-            {/* AIME Zone - Top Left Quadrant */}
-            <div className="absolute top-[15%] left-[15%] w-[30%] h-[30%] bg-indigo-50 border-2 border-dashed border-indigo-300 rounded-xl flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-xs font-bold text-indigo-700">AIME</div>
-                <div className="text-[10px] text-indigo-500">{t("优势区", "Strength Zone")}</div>
-              </div>
-            </div>
-
-            {/* Gemini Zone - Bottom Right Quadrant */}
-            <div className="absolute bottom-[15%] right-[15%] w-[30%] h-[30%] bg-rose-50 border-2 border-dashed border-rose-300 rounded-xl flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-xs font-bold text-rose-700">Gemini 3.5 Flash</div>
-                <div className="text-[10px] text-rose-500">{t("优势区", "Strength Zone")}</div>
-              </div>
-            </div>
-
-            {/* Ideal Zone - Top Right */}
-            <div className="absolute top-[18%] right-[18%] w-[24%] h-[24%] bg-emerald-50 border-2 border-emerald-300 rounded-xl flex items-center justify-center opacity-60">
-              <div className="text-center">
-                <div className="text-[10px] font-bold text-emerald-700">{t("理想区", "Ideal Zone")}</div>
-                <div className="text-[9px] text-emerald-500">IQ + EQ</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Two Sub-dimensions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          {/* Empathy */}
-          <div className="bg-card rounded-xl border border-rose-100 p-5 shadow-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center">
-                <Heart className="w-4 h-4" />
-              </div>
-              <h4 className="text-sm font-bold text-foreground">
-                {t("亲和力与降维沟通", "Empathy & Comprehensibility")}
-              </h4>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {t(
-                "投资是一个门槛极高的领域，如果 Agent 满嘴学术黑话（Jargon），只会将散户拒之门外。一个优秀的个人金融 Agent 必须具备「把复杂事物说简单（Explain Like I'm 5）」的沟通减摩力。",
-                "Investing has an extremely high barrier to entry. If the Agent speaks only in academic jargon, it will alienate retail investors. An excellent personal finance Agent must possess the ability to 'Explain Like I'm 5' — reducing communication friction."
-              )}
-            </p>
-            <div className="mt-3 bg-rose-50 rounded-lg p-3 border border-rose-100">
-              <p className="text-[11px] text-rose-700 leading-relaxed">
-                {t(
-                  "\u5728\u8bc4\u6d4b\u4e2d\uff0c\u6211\u4eec\u4e0d\u4ec5\u770b AI \u80fd\u4e0d\u80fd\u7b97\u51fa\u671f\u6743\u7684 Greeks\uff0c\u66f4\u770b\u5b83\u80fd\u4e0d\u80fd\u7528\u901a\u4fd7\u7684\u6bd4\u55bb\uff08\u4f8b\u5982\u7528\u2018\u4fdd\u8d39\u2019\u89e3\u91ca\u770b\u8dcc\u671f\u6743\u6743\u5229\u91d1\uff0c\u7528\u2018\u623f\u5c4b\u635f\u8017\u2019\u89e3\u91ca\u65f6\u95f4\u4ef7\u503c Theta \u8870\u51cf\uff09\uff0c\u5e76\u81ea\u52a8\u6e32\u67d3\u51fa\u9ad8\u4ea4\u4e92\u6027\u7684\u635f\u76ca\u56fe\u8868\uff0c\u5e2e\u52a9\u6563\u6237\u7528\u6700\u5c11\u7684\u8ba4\u77e5\u8d1f\u8377\u8fbe\u6210\u4ea4\u6613\u7406\u89e3\u3002",
-                  "In evaluation, we test not only whether AI can calculate option Greeks, but whether it can use plain analogies (e.g., 'insurance premium' for put option premium, 'house depreciation' for Theta decay), and auto-render interactive P&L charts to minimize cognitive load."
-                )}
-              </p>
-            </div>
-          </div>
-
-          {/* Quantitative Rigor */}
-          <div className="bg-card rounded-xl border border-blue-100 p-5 shadow-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
-                <Code className="w-4 h-4" />
-              </div>
-              <h4 className="text-sm font-bold text-foreground">
-                {t("硬核金融数理模型", "Quantitative Rigor")}
-              </h4>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {t(
-                "与普通闲聊 AI 不同，金融 AI 容不得半点胡言乱语（Hallucination）。一个标点符号的错误就可能导致用户爆仓或征信受损。",
-                "Unlike casual chat AI, financial AI tolerates zero hallucination. A single punctuation error could cause user liquidation or credit damage."
-              )}
-            </p>
-            <div className="mt-3 bg-blue-50 rounded-lg p-3 border border-blue-100">
-              <p className="text-[11px] text-blue-700 leading-relaxed mb-2">
-                {t(
-                  "在数理计算维度中，我们严格测试了杠杆损耗路径依赖、期权差价到期损益矩阵等极易出错的算力陷阱。这要求 Agent 底层必须具备：",
-                  "In the quantitative dimension, we rigorously test leverage decay path dependency, options spread expiration P&L matrices and other error-prone computational traps. This requires the Agent to possess:"
-                )}
-              </p>
-              <div className="space-y-1.5">
-                <div className="flex items-start gap-2">
-                  <Zap className="w-3 h-3 text-blue-500 mt-0.5 shrink-0" />
-                  <span className="text-[11px] text-blue-700">
-                    <strong>Tool-Use</strong>{t("：能自动将自然语言翻译成 Python 代码并运行（如 numpy 计算标准差和协方差）", ": Auto-translate natural language to Python code and execute (e.g., numpy for std dev and covariance)")}
-                  </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Database className="w-3 h-3 text-blue-500 mt-0.5 shrink-0" />
-                  <span className="text-[11px] text-blue-700">
-                    <strong>API {t("穿透深度", "Penetration Depth")}</strong>{t("：能实时提取毫秒级的期权链数据、高频行情及 SEC 原始文件", ": Real-time extraction of millisecond-level options chain data, high-frequency quotes, and SEC raw filings")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* ================================================================ */}
       {/* Section 4: Difficulty Rating */}
