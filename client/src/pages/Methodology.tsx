@@ -313,77 +313,7 @@ export default function Methodology() {
       </div>
 
       {/* ================================================================ */}
-      {/* Integration Framework */}
-      {/* ================================================================ */}
-      <div className="bg-gradient-to-r from-indigo-50 via-violet-50 to-rose-50 rounded-xl border border-indigo-100 p-6">
-        <div className="flex items-start gap-3">
-          <Sparkles className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
-          <div>
-            <h3 className="text-sm font-semibold text-indigo-900">
-              {t("评测方案总结", "Evaluation Framework Summary")}
-            </h3>
-            <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              {t(
-                "本评测方案通过 58 个精心设计的双向坐标系问题，不仅能测出 AIME 的垂直数据深度，更能测出 Gemini 3.5 Flash 的通用逻辑极限，为下一代金融 Agent 的打磨提供了最真实的散户痛点靶向测试。",
-                "This evaluation framework, through 58 carefully designed dual-axis questions, tests not only AIME's vertical data depth but also Gemini 3.5 Flash's general logic limits, providing the most authentic retail investor pain-point targeted testing for next-generation financial Agent development."
-              )}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Integration Diagram */}
-      <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
-        <h3 className="text-sm font-bold text-foreground mb-4 flex items-center gap-2">
-          <ArrowRight className="w-4 h-4 text-indigo-500" />
-          {t("融合评测框架", "Integrated Evaluation Framework")}
-        </h3>
-        <div className="flex flex-col md:flex-row items-center gap-4">
-          <div className="flex-1 bg-rose-50 rounded-lg p-4 border border-rose-100 text-center">
-            <p className="text-xs font-bold text-rose-700">
-              {t("行为金融学", "Behavioral Finance")}
-            </p>
-            <p className="text-[10px] text-rose-500 mt-1">User Empathy (EQ)</p>
-          </div>
-          <div className="text-2xl text-muted-foreground font-light">+</div>
-          <div className="flex-1 bg-blue-50 rounded-lg p-4 border border-blue-100 text-center">
-            <p className="text-xs font-bold text-blue-700">
-              {t("CFA 组合管理", "CFA Portfolio Mgmt")}
-            </p>
-            <p className="text-[10px] text-blue-500 mt-1">Quantitative Rigor (IQ)</p>
-          </div>
-          <div className="text-2xl text-muted-foreground font-light">=</div>
-          <div className="flex-1 bg-indigo-50 rounded-lg p-4 border border-indigo-200 text-center">
-            <p className="text-xs font-bold text-indigo-700">
-              {t("综合边界考察", "Comprehensive Boundary Test")}
-            </p>
-            <p className="text-[10px] text-indigo-500 mt-1">58 Questions × 5 Levels</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ============================================================
-// Section Header Component
-// ============================================================
-function SectionHeader({ number, title, color }: { number: string; title: string; color: string }) {
-  const colorMap: Record<string, string> = {
-    indigo: "bg-indigo-100 text-indigo-600",
-    violet: "bg-violet-100 text-violet-600",
-    amber: "bg-amber-100 text-amber-600",
-  };
-  return (
-    <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-      <span className={`w-6 h-6 rounded-md ${colorMap[color] || colorMap.indigo} flex items-center justify-center text-xs font-bold`}>
-        {number}
-      </span>
-      {title}
-    </h3>
-  );
-}
-
+    
 // ============================================================
 // Motivation Card Component
 // ============================================================
