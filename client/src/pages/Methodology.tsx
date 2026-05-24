@@ -51,68 +51,102 @@ export default function Methodology() {
       </div>
 
       {/* ================================================================ */}
-      {/* Section 2: Two Pillars */}
+
+      {/* Section 2: Three Pillars */}
       {/* ================================================================ */}
       <div>
         <SectionHeader
           number="1"
-          title={t("散户交易心理的深度洞察与动机映射", "Retail Trading Psychology & Motivation Mapping")}
+          title={t("三大核心支柱：心理洞察 X 模型能力 X 市场理解", "Three Core Pillars: Psychology, Model, & Market")}
           color="indigo"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-          {/* Pillar 1: Behavioral Finance */}
-          <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
-                <Brain className="w-5 h-5" />
+        {/* 🌟 调整为 grid-cols-1 md:grid-cols-3 以支持 3 栏并排布局 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+          
+          {/* Pillar 1: Trading Psychology */}
+          <div className="bg-card rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center shrink-0">
+                  <Brain className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-foreground">
+                    {t("1. 交易心理洞察", "1. Trading Psychology")}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">Behavioral Finance</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-foreground">
-                  {t("散户交易心理洞察", "Retail Trading Psychology")}
-                </h3>
-                <p className="text-xs text-muted-foreground">Behavioral Finance</p>
-              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                {t(
+                  "结合行为金融学理论，洞察散户投资者（活跃于 Reddit、X 等社群）的情绪化特征、认知偏差（如 FOMO 踏空焦虑、损失厌恶等）和市场噪音痛点，专门设计高情绪压力与“无标准答案”的测试场景。面对爆仓等情况，Agent 需要兼顾 Therapist（心理治疗师）的情绪承接角色。",
+                  "Combining behavioral finance theories to analyze retail investors' emotional traits, cognitive biases (FOMO, loss aversion), and market noise, specifically designing high-emotion and 'unsolvable' scenarios. When facing blowouts, the Agent needs to act as a therapist to contain emotional distress."
+                )}
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-              {t(
-                "欧美散户（特别是活跃于 Reddit、X 和 Discord 的交易者）的鲜明特点是情绪化、易受认知偏差影响、高频暴露于市场噪音中。因此，我认为心理和情绪类问题是散户的交易痛点和心理弱点，专门设计了超过10个相关问题，这类问题的特征是没有标准化答案，甚至很多时候可能是\u201c无解\u201d的（\u201c我期权爆仓了怎么办，我真的好后悔\u201d）；面对这类问题时 Agent 其实需要做得更像是一个 therapist 心理治疗师的角色。",
-                "Western retail traders (especially those active on Reddit, X, and Discord) are distinctly emotional, susceptible to cognitive biases, and frequently exposed to market noise. Therefore, I believe psychological and emotional questions represent core retail pain points. I designed over 10 such questions—characterized by having no standardized answers, often being 'unsolvable' ('My options blew up, I really regret it'). For these, the Agent needs to act more like a therapist."
-              )}
-            </p>
-            <div className="text-xs font-medium text-rose-600">
+            <div className="text-[11px] font-semibold text-rose-600 mt-2">
               {t("考察维度：亲和理解力 (User Empathy)", "Dimension: User Empathy")}
             </div>
           </div>
 
-          {/* Pillar 2: CFA Portfolio Management */}
-          <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                <Layers className="w-5 h-5" />
+          {/* Pillar 2: Model Benchmarking */}
+          <div className="bg-card rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-foreground">
+                    {t("2. 模型能力考察", "2. Model Benchmarking")}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">Quantitative Rigor</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-foreground">
-                  {t("CFA 资产组合管理", "CFA Portfolio Management")}
-                </h3>
-                <p className="text-xs text-muted-foreground">Quantitative Rigor</p>
-              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                {t(
+                  "基于现代投资组合理论（MPT）、多因子风险模型、期权及衍生品定价（Black-Scholes 模型）和资产配置框架，严苛检验 Agent 在数理计算、程序化数据处理以及公式调用中的硬核逻辑稳定性，降低幻觉风险。",
+                  "Based on Modern Portfolio Theory (MPT), multi-factor risk models, derivative pricing (Black-Scholes), and asset allocation frameworks, rigorously testing the Agent's hardcore logical stability in mathematical calculations and formula execution to mitigate hallucination."
+                )}
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-              {t(
-                "基于 CFA 特许金融分析师体系下的现代投资组合理论（MPT）、风险因子模型、衍生品定价和资产配置框架，检验 Agent 的硬核金融建模能力。",
-                "Based on Modern Portfolio Theory (MPT), risk factor models, derivative pricing, and asset allocation frameworks under the CFA charter system, testing the Agent's hardcore financial modeling capabilities."
-              )}
-            </p>
-            <div className="text-xs font-medium text-blue-600">
+            <div className="text-[11px] font-semibold text-blue-600 mt-2">
               {t("考察维度：硬核金融模型深度 (Quantitative Rigor)", "Dimension: Quantitative Rigor")}
             </div>
           </div>
+
+          {/* Pillar 3: Market Understanding */}
+          <div className="bg-card rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-foreground">
+                    {t("3. 金融市场理解", "3. Market Understanding")}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">Macro & Micro Insights</p>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                {t(
+                  "这个主要是我为了该面试，便于面试官更好的了解我，以及评估我对金融市场的理解深度；许多问题题干体现了我对于全球宏观经济传导、热门美股标的捕捉、以及税务规划的理解。",
+                  "Deeply deconstructing global macroeconomic transmission, complex US equities (focusing on AI & Semiconductors), crypto, commodities, and tax planning. Evaluating the Agent's long-chain industrial logic and its capability to extract key insights from complex underlying alerts."
+                )}
+              </p>
+            </div>
+            <div className="text-[11px] font-semibold text-emerald-600 mt-2">
+              {t("考察维度：行业洞察与宏观逻辑 (Market Insights)", "Dimension: Market Insights")}
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* 4 Motivation Mapping */}
-      <div>
+      <div className="mt-8">
         <p className="text-xs text-muted-foreground mb-4">
           {t(
             "将散户的交易痛点和心理弱点，精准映射到 4 大底层需求动机中：",
