@@ -615,12 +615,12 @@ export default function Conclusion() {
                 {isOpt3Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
               </div>
               <h3 className="text-xs font-bold text-foreground">
-                {t("思路3：引入“情绪承接 ➔ 本土化解偏 ➔ 硬核风控动作落地”干预闭环", "Behavioral Finance Intervention Closed-Loop")}
+                {t("思路3：不只是脑子好的分析师，还是给情绪价值的交易陪伴搭子", "Behavioral Finance Intervention Closed-Loop")}
               </h3>
 
               {!isOpt3Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("先共情用户、再拆解偏误，以柔性的表达配合极其坚定的风控硬边界阻断错误交易。", "De-escalate panic trading with strong retail sentiment understanding and rigid risk rules.")}
+                  {t("引入“情绪承接 ➔ 本土化解偏 ➔ 风控动作”思维，先共情用户、再拆解偏误，以柔性的表达配合极其坚定的风控硬边界阻断错误交易。", "De-escalate panic trading with strong retail sentiment understanding and rigid risk rules.")}
                 </p>
               )}
             </div>
