@@ -1,1 +1,11 @@
-e|"buildCommand":"pnpm build","outputDirectory":"dist/public","installCommand":"pnpm install","rewrites":[{"src":"/(.*)","destination":"/index.html"}]}
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist/public",
+  "installCommand": "pnpm install",
+  "rewrites": [
+    {
+      "src": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
