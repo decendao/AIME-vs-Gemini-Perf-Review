@@ -266,8 +266,6 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
   return (  
     <div className="space-y-8 pb-12">
 
-      
-/* ----------------- 新插入的六维评判总纲模块 开始 ----------------- */
       <div className="bg-card rounded-2xl border border-border p-6 shadow-sm">
         <div className="mb-6">
           <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
@@ -367,8 +365,7 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
           {t("通过这 6 大量化评估维度对 58 个典型 Cases 进行全方位评判比较，不仅深度考验了 Agent 的硬核极限，更精准折射出团队对真实交易场景及专业金融体系的深度理解力。", "Using these 6 quantitative dimensions to comprehensively benchmark the 58 cases, this framework not only stresses the models to their limits but also reflects our deep understanding of the retail ecosystem and rigorous finance.")}
         </div>
       </div>
-      
-      /* ----------------- 新插入的六维评判总纲模块 结束 ----------------- */
+
       
       {/* Page Header */}
       <div className="mb-8">
