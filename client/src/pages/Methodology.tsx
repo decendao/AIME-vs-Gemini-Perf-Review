@@ -57,7 +57,7 @@ export default function Methodology() {
       <div>
         <SectionHeader
           number="1"
-          title={t("三大核心支柱：心理洞察 X 模型能力 X 市场理解", "Three Core Pillars: Psychology, Model, & Market")}
+          title={t("3层设计出发点：心理洞察 X 模型能力 X 市场理解", "Three Core Pillars: Psychology, Model, & Market")}
           color="indigo"
         />
 
