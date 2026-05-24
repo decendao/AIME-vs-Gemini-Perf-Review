@@ -390,12 +390,12 @@ export default function Conclusion() {
                 {isIssue1Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
               </div>
               <h3 className="text-xs font-bold text-foreground">
-                {t("复杂金融研究链路的高延迟导致用户信任流失", "High Latency in Multi‑Agent Flows")}
+                {t("复杂研究链路的高延迟 & 过于极客/调试Log式的CoT", "High Latency in Multi‑Agent Flows")}
               </h3>
               
               {!isIssue1Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("多因子筛选、DCF 估值测算等多表财务关联任务，会导致平均延迟高达 40s 至 60s。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
+                  {t("多因子筛选、DCF 估值测算和 期权数据检索，会导致平均延迟高达 40s 至 60s 甚至更久。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
                 </p>
               )}
             </div>
@@ -404,13 +404,13 @@ export default function Conclusion() {
               <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "面临复杂场景时，系统会触发长链条执行流（意图解析 -> 任务拆解 -> 调库检索 -> 本地运行代码 -> 建模/筛选 -> 校验）。这导致平均延迟高达 40s - 60s。此任务性质更接近一个研究工作流系统，而非简单的一问一答。",
+                    "面临复杂场景时，系统会触发长链条执行流（意图解析 -> 任务拆解 -> 调库检索 -> 本地运行代码 -> 建模/筛选 -> 校验）。这导致平均输出CoT展示时长高达 60s - 120s。Aime 处理此类问题时更接近一个研究工作流系统，而非简单的一问一答。AIME 在界面中直接将 Agent 底层最原始的 JSON 运行指令、运行超时参数（timeout_ms: 30000）、物理沙盒路径（/tmp/...）以及带有换行非转义字符（\n\n）的原始终端输出（stdout） 毫无保留地展示给了用户。",
                     "Complex tasks trigger a long ReAct sequence (Intent parsed -> tool allocation -> SQL index -> local execution sandbox -> valuation -> advisory output), spiking latency to 40-60 seconds. This is a heavy workflow rather than simple Q&A."
                   )}
                 </p>
                 <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
                   <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
-                  {t("等待期仅提供单一静态 Loading 动画，无渐进式中间状态输出，散户在瞬息万变的日内交易场景下极易直接流失。", "The UI shows only a generic loading spinner without intermediate state transitions, causing rapid drop-offs under real-time market pressure.")}
+                  {t("对于大多数欧美普通的散户而言，这种直接裸露的 系统控制台/调试日志 过于极客。普通用户看到代码、cmd 以及换行符，容易产生 [系统是不是出 Bug 了]或[是不是报错了]的焦虑和失望，不仅无法建立信任，反而增加了认知负荷（Cognitive Load）。", "The UI shows only a generic loading spinner without intermediate state transitions, causing rapid drop-offs under real-time market pressure.")}
                 </div>
               </div>
             )}
