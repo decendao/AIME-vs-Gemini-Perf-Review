@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { BarChart3, List, Globe, User, Compass, FileText } from "lucide-react";
+import { BarChart3, User, Compass, List, FileText, FileCheck } from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
