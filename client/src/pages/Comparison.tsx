@@ -1,5 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { BarChart3, Brain, Search, MessageCircle, TrendingUp, TrendingDown, Lightbulb, CheckCircle2, XCircle, AlertTriangle, layers } from "lucide-react";
+import { BarChart3, Brain, Search, MessageCircle, TrendingUp, TrendingDown, Lightbulb, CheckCircle2, XCircle, AlertTriangle, Layers } from "lucide-react";
 
 export default function Comparison() {
   const { t, lang } = useLanguage();
