@@ -272,7 +272,7 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
         </h2>
         <p className="text-sm text-muted-foreground mt-2">
           {t(
-            "针对 58 个问题所属的 4 大需求动机分类，各分类的评测结论，分析 AIME 在该场景下的优劣势、改进方案。",
+            "58 个问题涵盖了 4 大需求维度分类，各分类的评测结论，分析 AIME 在该场景下的优劣势。",
             "For each of the 4 major motivation categories covering 58 questions, providing evaluation conclusions and analyzing AIME's strengths, weaknesses, and optimization proposals."
           )}
         </p>
