@@ -58,7 +58,7 @@ const USER_TRAITS: TraitCard[] = [
   },
   {
     icon: <Receipt className="w-5 h-5" />,
-    title: "极强的税务合规与合法省税意识",
+    title: "极强的税务成本和避税意识",
     titleEn: "Tax-Conscious & Account-Driven",
     description: "身处复杂欧美财税体系，对资本利得税极其敏感，注重短期与长期税率区别。习惯基于特定属性账户（Roth IRA、401(k)、HSA）进行长线投资组合构建。",
     descriptionEn: "Operates within complex Western tax systems, extremely sensitive to capital gains tax, distinguishing short-term vs long-term rates. Builds long-term portfolios through tax-advantaged accounts (Roth IRA, 401(k), HSA).",
@@ -69,7 +69,7 @@ const USER_TRAITS: TraitCard[] = [
     icon: <PieChart className="w-5 h-5" />,
     title: "核心-卫星投资结构",
     titleEn: "Core-Satellite Strategy",
-    description: "底层资产保守，持有低成本宽基指数基金（VOO 标普500、QQQM 纳指100）作为核心；卫星资产极度激进，配置 AI 板块、半导体个股、期权和 Crypto 以博取超额 Alpha。",
+    description: "底层资产保守，持有低税务成本的ETF如SPY、VOO和QQQ；卫星资产极度激进，配置 AI 板块、半导体个股、期权和 Crypto 以博取超额 Alpha。",
     descriptionEn: "Conservative core with low-cost broad index funds (VOO S&P500, QQQM Nasdaq100); extremely aggressive satellite with AI sector, semiconductor stocks, options and crypto for alpha generation.",
     tags: ["VOO", "QQQM", "Core-Satellite", "Alpha"],
     tagsEn: ["VOO", "QQQM", "Core-Satellite", "Alpha"],
