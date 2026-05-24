@@ -57,7 +57,7 @@ export default function Details() {
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
           {t(
-            `共 ${questions.length} 个测试问题，覆盖 4 大分类维度 × 4 大核心动机`,
+            `共 ${questions.length} 个测试问题，覆盖 4 大分类维度 × 4 种复杂度`,
             `${questions.length} test questions covering 4 categories × 4 core motivations`
           )}
         </p>
