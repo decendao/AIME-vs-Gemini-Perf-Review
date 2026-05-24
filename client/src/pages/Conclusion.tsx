@@ -651,11 +651,11 @@ export default function Conclusion() {
         <Info className="w-7 h-7 text-indigo-600 dark:text-indigo-400 shrink-0" />
         <div className="space-y-1">
           <h4 className="text-xs font-bold text-foreground">
-            {t("未来改进战略思考", "Strategic Action Points for AIME")}
+            {t("知识产权声明", "Strategic Action Points for AIME")}
           </h4>
           <p className="text-[11px] text-muted-foreground leading-relaxed">
             {t(
-              "真正优秀的垂直金融大模型，不应仅仅充当静态财务指标的‘数据罗列器’，更应融合 AIME 底层不可替代的‘硬核查准率数据护城河’与通用大模型的‘长链思辨框架层’和‘同理心沟通交互（EQ）’。通过缩短 ReAct 长调用链路（展示中间状态、流式输出）、引入投研推理逻辑模板、以及本土化金融沟通，才能在残酷的市场竞争中与高频波动场景中建立深层的用户信任。",
+              "本评测项目及报告（包括但不限于文字内容、设计思路、58个评测案例、指标打分维度、可视化页面及代码等）的全部知识产权与著作权均归创作者本人所有，并受到《中华人民共和国著作权法》、《中华人民共和国民法典》及国际知识产权条约的严格保护。本评测结论、设计逻辑、比较维度及代码实现，仅限用于个人求职、面试准备及技术交流。",
               "A mature domain assistant must synergize AIME's engineering-level accuracy with Gemini's narrative depth and empathy. Lowering interface latency (via streaming intermediate nodes), integrating reasoning loops, and addressing retail sentiments (r/wallstreetbets) are pivotal to transforming raw numbers into highly actionable, trusted financial intelligence."
             )}
           </p>
