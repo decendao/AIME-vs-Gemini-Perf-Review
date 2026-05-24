@@ -395,7 +395,7 @@ export default function Conclusion() {
               
               {!isIssue1Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("多因子筛选、DCF 估值测算和 期权数据检索，会导致平均延迟高达 40s 至 60s 甚至更久。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
+                  {t("面对复杂问题时thinking时间过长，在问题34（期权检索）尤其显著，最终居然花了13分钟输出最终回答。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
                 </p>
               )}
             </div>
