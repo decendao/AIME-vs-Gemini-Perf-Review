@@ -1,4 +1,4 @@
-AIME vs. Gemini 3.5 Flash：欧美散户场景表现评测
+#AIME vs. Gemini 3.5 Flash：欧美散户场景表现评测#
 
 线上交互式仪表盘：https://www.marcomoney.app/
 
@@ -71,3 +71,4 @@ Vercel 部署，域名 www.marcomoney.app
 特定用途限制：本项目之所有评测成果、设计逻辑、比较维度及代码实现，仅限用于个人求职、面试准备及技术交流之用途。
 
 Copyright © 2026 by Marco 刘凌鹏. All rights reserved.
+2026.05.24 21:31 上海
