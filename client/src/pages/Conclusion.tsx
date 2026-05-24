@@ -1,258 +1,516 @@
+import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getResultStats } from "@/data/questions";
-import {
-  AlertTriangle, CheckCircle2, Lightbulb, Target,
-  TrendingUp, TrendingDown, ArrowRight, Sparkles
+import { 
+  Trophy, Target, TrendingUp, AlertTriangle, Brain, 
+  Search, MessageSquare, Clock, ShieldAlert, Sparkles, Scale, Info, Check, X,
+  ChevronDown, ChevronUp
 } from "lucide-react";
 
 // ============================================================
-// 评测结论页 - 问题定义、优劣势总结、改进方案
-// 设计风格：Swiss Fintech - 结构化卡片、清晰层级
+// 评测结论页 - 深度分析与痛点定义 (支持响应式折叠，极致留白风格)
 // ============================================================
 
-interface Problem {
-  id: number;
-  title: string;
-  titleEn: string;
-  description: string;
-  descriptionEn: string;
-  severity: "high" | "medium" | "low";
-  category: string;
-  categoryEn: string;
-  solution: string;
-  solutionEn: string;
-}
-
-// Mock 问题定义数据（待用户数据替换）
-const PROBLEMS: Problem[] = [
-  {
-    id: 1,
-    title: "趋势预测过于确定性",
-    titleEn: "Overly Deterministic Predictions",
-    description: "在涉及市场走势预测的问题中，AIME倾向于给出确定性结论，缺乏多情景分析和不确定性表达，可能误导投资者。",
-    descriptionEn: "AIME tends to give deterministic conclusions in market prediction questions, lacking multi-scenario analysis and uncertainty expression.",
-    severity: "high",
-    category: "趋势预测",
-    categoryEn: "Trend Prediction",
-    solution: "引入概率化表达框架，对预测类问题强制输出乐观/中性/悲观三种情景及其概率权重，并明确标注预测的置信度区间。",
-    solutionEn: "Introduce probabilistic expression framework with mandatory optimistic/neutral/pessimistic scenarios and confidence intervals.",
-  },
-  {
-    id: 2,
-    title: "风险提示不够充分",
-    titleEn: "Insufficient Risk Warnings",
-    description: "在投资建议类回答中，AIME的风险提示往往放在末尾且篇幅较短，不够醒目，可能导致用户忽视潜在风险。",
-    descriptionEn: "Risk warnings in investment advice are often brief and placed at the end, potentially causing users to overlook risks.",
-    severity: "high",
-    category: "投资组合建议",
-    categoryEn: "Portfolio Advice",
-    solution: "将风险提示前置并视觉强化，采用结构化风险评级（高/中/低），并在给出具体标的推荐时强制附带止损建议和最大回撤预警。",
-    solutionEn: "Front-load risk warnings with visual emphasis, use structured risk ratings, and mandate stop-loss suggestions with max drawdown alerts.",
-  },
-  {
-    id: 3,
-    title: "纯推理场景无差异化优势",
-    titleEn: "No Differentiation in Pure Reasoning",
-    description: "在金融知识问答和纯逻辑推理场景中，AIME与通用大模型表现相当，未能体现专业金融AI的差异化价值。",
-    descriptionEn: "In financial knowledge Q&A and pure reasoning, AIME performs similarly to general LLMs without showing differentiated value.",
-    severity: "medium",
-    category: "金融知识问答",
-    categoryEn: "Financial Knowledge",
-    solution: "在知识类回答中融入实时市场数据验证和实际案例关联，将静态知识转化为动态洞察。例如解释可转债强赎时，同步展示当前市场中即将触发强赎的具体标的。",
-    solutionEn: "Integrate real-time market data validation and case studies into knowledge answers, transforming static knowledge into dynamic insights.",
-  },
-  {
-    id: 4,
-    title: "缺乏同行业横向对比",
-    titleEn: "Lacking Peer Comparison",
-    description: "在个股分析中，AIME往往只给出单一标的的数据，缺少同行业或同板块的横向对比视角，限制了分析的深度。",
-    descriptionEn: "Single-stock analysis lacks peer comparison perspective, limiting analytical depth.",
-    severity: "medium",
-    category: "风险评估",
-    categoryEn: "Risk Assessment",
-    solution: "在个股分析回答中自动补充行业均值对比和同板块TOP5标的的关键指标对照表，帮助用户建立相对估值视角。",
-    solutionEn: "Auto-append industry average comparison and top-5 peer metrics table in single-stock analysis.",
-  },
-  {
-    id: 5,
-    title: "响应时间在复杂查询中偏长",
-    titleEn: "Slow Response for Complex Queries",
-    description: "在涉及大量数据筛选和计算的复杂查询中（如全市场股票筛选），AIME的响应时间超过50秒，影响用户体验。",
-    descriptionEn: "Response time exceeds 50s for complex queries involving large-scale data filtering, affecting user experience.",
-    severity: "low",
-    category: "数据查询与筛选",
-    categoryEn: "Data Query & Filtering",
-    solution: "实施渐进式响应策略：先快速返回部分结果和进度指示，再逐步补全完整数据。同时优化后端数据索引和缓存策略。",
-    solutionEn: "Implement progressive response: return partial results quickly with progress indicators, then complete data incrementally.",
-  },
-];
-
 export default function Conclusion() {
-  const { t, lang } = useLanguage();
-  const stats = getResultStats();
+  const { t } = useLanguage();
+
+  // 深度诊断卡片折叠状态
+  const [isQuantOpen, setIsQuantOpen] = useState(false);
+  const [isQualOpen, setIsQualOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isEQOpen, setIsEQOpen] = useState(false);
+
+  // 核心产品痛点折叠状态
+  const [isIssue1Open, setIsIssue1Open] = useState(false);
+  const [isIssue2Open, setIsIssue2Open] = useState(false);
+  const [isIssue3Open, setIsIssue3Open] = useState(false);
 
   return (
-    <div className="space-y-8 animate-fade-in-up">
+    <div className="space-y-8 animate-fade-in-up max-w-5xl mx-auto pb-12">
+      
       {/* Page Header */}
-      <div>
-        <h2 className="text-2xl font-bold text-foreground">
-          {t("评测结论", "Evaluation Conclusion")}
-        </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {t("基于对比评测的问题定义与改进方案", "Problem identification and improvement proposals based on evaluation")}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+          <Sparkles className="w-4 h-4" />
+          <span className="text-[10px] font-bold uppercase tracking-wider font-mono">Evaluation Report</span>
+        </div>
+        <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+          {t("最终评测结论", "Final Evaluation Conclusion")}
+        </h1>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          {t(
+            "基于 58 个覆盖多维投资动机和场景的真实测评案例，深度剖析垂直金融 AI Agent（AIME）与通用大模型（Gemini 3.5 Flash）在复杂金融交易场景下的核心壁垒与局限性。",
+            "Based on 58 real evaluation cases covering multi-dimensional investment motivations and scenarios, this report deeply analyzes the core barriers and limitations for vertical financial AI Agent (AIME) and general LLM (Gemini 3.5 Flash) under complex trading conditions."
+          )}
         </p>
       </div>
 
-      {/* Overall Verdict */}
-      <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
-            <Target className="w-6 h-6 text-indigo-600" />
-          </div>
+      {/* ================================================================ */}
+      {/* 1. 总胜负对比 & 4大维度胜负分布 */}
+      {/* ================================================================ */}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        
+        {/* 1.1 总胜负对比 */}
+        <div className="bg-card rounded-xl border border-border p-5 shadow-sm lg:col-span-1 flex flex-col justify-between">
           <div>
-            <h3 className="text-lg font-bold text-foreground">
-              {t("总体评价", "Overall Assessment")}
+            <h3 className="text-xs font-bold text-foreground flex items-center gap-2 mb-3">
+              <Trophy className="w-3.5 h-3.5 text-amber-500" />
+              {t("总胜负对比", "Overall Results")}
             </h3>
-            <p className="mt-2 text-sm text-foreground leading-relaxed">
-              {t(
-                `在 ${stats.total} 个投资场景测试中，AIME 以 ${stats.wins}胜${stats.ties}平${stats.losses}负 的成绩显著领先 Gemini 3.5 Flash（胜率 ${((stats.wins / stats.total) * 100).toFixed(0)}%）。AIME 的核心竞争力在于实时金融数据接入能力和专业数据库的广度覆盖，这使其在数据查询、行情分析、实时报价等场景中具有压倒性优势。但在纯推理、趋势预测和知识问答等不依赖实时数据的场景中，AIME 需要进一步强化差异化能力。`,
-                `In ${stats.total} investment scenario tests, AIME significantly leads Gemini 3.5 Flash with ${stats.wins}W-${stats.ties}D-${stats.losses}L (${((stats.wins / stats.total) * 100).toFixed(0)}% win rate). AIME's core competitiveness lies in real-time financial data access and comprehensive database coverage. However, in scenarios not relying on real-time data (reasoning, prediction, knowledge Q&A), AIME needs to further strengthen differentiation.`
-              )}
+            <p className="text-[11px] text-muted-foreground mb-4">
+              {t("在 58 个 Case 的对标评测中，两款助手在不同场景下表现出明显的长短板：", "Across 58 benchmarked cases, both assistants demonstrated distinct strengths and weaknesses:")}
             </p>
           </div>
-        </div>
-      </div>
 
-      {/* Strengths & Weaknesses */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Strengths */}
-        <div className="bg-card rounded-xl border border-emerald-100 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-emerald-700 flex items-center gap-2 mb-4">
-            <TrendingUp className="w-4 h-4" />
-            {t("AIME 核心优势", "AIME Core Strengths")}
-          </h3>
           <div className="space-y-3">
-            {[
-              t("实时金融数据接入，信息时效性远超通用模型", "Real-time financial data access far exceeding general models"),
-              t("全量A股数据库覆盖，筛选查询完整准确", "Complete A-share database coverage with accurate filtering"),
-              t("金融专业术语理解准确，意图解析精准", "Accurate financial terminology understanding and intent parsing"),
-              t("多标的对比分析能力强，数据格式化输出清晰", "Strong multi-asset comparison with clear formatted output"),
-              t("平均响应速度优于竞品", "Average response speed faster than competitor"),
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                <span className="text-sm text-foreground">{item}</span>
+            {/* Visual Bar */}
+            <div className="w-full bg-secondary h-3.5 rounded-full overflow-hidden flex">
+              <div style={{ width: "55.2%" }} className="bg-emerald-600 dark:bg-emerald-500 h-full" title="AIME Win" />
+              <div style={{ width: "25.8%" }} className="bg-muted-foreground/30 h-full" title="Draw" />
+              <div style={{ width: "19.0%" }} className="bg-rose-500 h-full" title="Gemini Win" />
+            </div>
+
+            {/* Legend Indicators */}
+            <div className="grid grid-cols-3 gap-1 pt-1">
+              <div className="text-center p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/20">
+                <span className="block text-[9px] text-emerald-700 dark:text-emerald-400 font-bold">{t("AIME 胜", "AIME Win")}</span>
+                <span className="text-base font-extrabold font-mono text-emerald-800 dark:text-emerald-300">32</span>
+                <span className="block text-[8px] text-muted-foreground">55.2%</span>
               </div>
-            ))}
+              <div className="text-center p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/40">
+                <span className="block text-[9px] text-muted-foreground font-bold">{t("平局", "Draw")}</span>
+                <span className="text-base font-extrabold font-mono text-foreground">15</span>
+                <span className="block text-[8px] text-muted-foreground">25.8%</span>
+              </div>
+              <div className="text-center p-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/20">
+                <span className="block text-[9px] text-rose-700 dark:text-rose-400 font-bold">{t("Gemini 胜", "Gemini Win")}</span>
+                <span className="text-base font-extrabold font-mono text-rose-800 dark:text-rose-300">11</span>
+                <span className="block text-[8px] text-muted-foreground">19.0%</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Weaknesses */}
-        <div className="bg-card rounded-xl border border-rose-100 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-rose-700 flex items-center gap-2 mb-4">
-            <TrendingDown className="w-4 h-4" />
-            {t("AIME 待改进项", "AIME Areas for Improvement")}
+        {/* 1.2 维度分布对比 */}
+        <div className="bg-card rounded-xl border border-border p-5 shadow-sm lg:col-span-2 space-y-3">
+          <h3 className="text-xs font-bold text-foreground flex items-center gap-2">
+            <Scale className="w-3.5 h-3.5 text-indigo-500" />
+            {t("4大需求维度胜负分布对比", "Performance Across 4 Core Dimensions")}
           </h3>
-          <div className="space-y-3">
-            {[
-              t("趋势预测过于确定，缺乏概率化表达", "Overly deterministic predictions lacking probabilistic expression"),
-              t("风险提示不够前置和醒目", "Risk warnings not prominent enough"),
-              t("纯知识问答场景缺乏差异化", "No differentiation in pure knowledge Q&A"),
-              t("个股分析缺少行业横向对比", "Single-stock analysis lacks peer comparison"),
-              t("复杂查询响应时间偏长", "Slow response for complex queries"),
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <AlertTriangle className="w-4 h-4 text-rose-400 mt-0.5 shrink-0" />
-                <span className="text-sm text-foreground">{item}</span>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+            {/* Dimension 1 */}
+            <div className="bg-muted/10 rounded-lg p-2.5 border border-border/50">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[11px] font-bold text-foreground">📊 {t("模拟计算", "Simulate & Calculate")}</span>
+                <span className="text-[9px] text-muted-foreground">15 Cases</span>
               </div>
-            ))}
+              <div className="space-y-0.5 text-[10px]">
+                <div className="flex justify-between"><span>AIME {t("胜", "Win")}</span><span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">11</span></div>
+                <div className="flex justify-between"><span>{t("平局", "Draw")}</span><span className="font-mono text-muted-foreground">3</span></div>
+                <div className="flex justify-between"><span>Gemini {t("胜", "Win")}</span><span className="font-mono font-bold text-rose-500">1</span></div>
+              </div>
+            </div>
+
+            {/* Dimension 2 */}
+            <div className="bg-muted/10 rounded-lg p-2.5 border border-border/50">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[11px] font-bold text-foreground">🧠 {t("定性分析 & 逻辑推演", "Qualitative & Logic")}</span>
+                <span className="text-[9px] text-muted-foreground">15 Cases</span>
+              </div>
+              <div className="space-y-0.5 text-[10px]">
+                <div className="flex justify-between"><span>AIME {t("胜", "Win")}</span><span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">5</span></div>
+                <div className="flex justify-between"><span>{t("平局", "Draw")}</span><span className="font-mono text-muted-foreground">6</span></div>
+                <div className="flex justify-between"><span>Gemini {t("胜", "Win")}</span><span className="font-mono font-bold text-rose-500">4</span></div>
+              </div>
+            </div>
+
+            {/* Dimension 3 */}
+            <div className="bg-muted/10 rounded-lg p-2.5 border border-border/50">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[11px] font-bold text-foreground">🔍 {t("数据检索", "Scan & Verify")}</span>
+                <span className="text-[9px] text-muted-foreground">15 Cases</span>
+              </div>
+              <div className="space-y-0.5 text-[10px]">
+                <div className="flex justify-between"><span>AIME {t("胜", "Win")}</span><span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">12</span></div>
+                <div className="flex justify-between"><span>{t("平局", "Draw")}</span><span className="font-mono text-muted-foreground">1</span></div>
+                <div className="flex justify-between"><span>Gemini {t("胜", "Win")}</span><span className="font-mono font-bold text-rose-500">2</span></div>
+              </div>
+            </div>
+
+            {/* Dimension 4 */}
+            <div className="bg-muted/10 rounded-lg p-2.5 border border-border/50">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[11px] font-bold text-foreground">💬 {t("情绪引导", "Behavioral & EQ")}</span>
+                <span className="text-[9px] text-muted-foreground">13 Cases</span>
+              </div>
+              <div className="space-y-0.5 text-[10px]">
+                <div className="flex justify-between"><span>AIME {t("胜", "Win")}</span><span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">4</span></div>
+                <div className="flex justify-between"><span>{t("平局", "Draw")}</span><span className="font-mono text-muted-foreground">5</span></div>
+                <div className="flex justify-between"><span>Gemini {t("胜", "Win")}</span><span className="font-mono font-bold text-rose-500">4</span></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Problem Cards */}
-      <div>
-        <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-          <Lightbulb className="w-5 h-5 text-amber-500" />
-          {t("问题定义与改进方案", "Problem Definition & Solutions")}
-        </h3>
-        <div className="space-y-4">
-          {PROBLEMS.map((problem) => (
-            <ProblemCard key={problem.id} problem={problem} />
-          ))}
+      {/* ================================================================ */}
+      {/* 2. 各维度评测结论深度诊断（支持折叠展开） */}
+      {/* ================================================================ */}
+      <section className="space-y-4">
+        <div className="border-b border-border pb-2">
+          <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
+            <Target className="w-4 h-4 text-indigo-500" />
+            {t("各维度评测结论深度诊断 (点击卡片展开详情)", "In-depth Dimension Diagnosis (Click cards to expand)")}
+          </h2>
         </div>
-      </div>
 
-      {/* Future Outlook */}
-      <div className="bg-gradient-to-r from-indigo-50 to-violet-50 rounded-xl border border-indigo-100 p-6">
-        <div className="flex items-start gap-3">
-          <Sparkles className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
-          <div>
-            <h3 className="text-sm font-semibold text-indigo-900">
-              {t("改进优先级建议", "Improvement Priority Recommendation")}
-            </h3>
-            <p className="mt-2 text-sm text-indigo-700 leading-relaxed">
-              {t(
-                "建议按照「高严重度 → 中严重度 → 低严重度」的优先级推进改进。短期内优先解决趋势预测的确定性偏差和风险提示前置问题（影响用户决策安全），中期补强知识问答的差异化能力（提升产品壁垒），长期优化复杂查询的响应速度（改善体验）。",
-                "Recommend prioritizing improvements by severity: short-term fix prediction determinism and risk warning placement (user safety), mid-term strengthen knowledge Q&A differentiation (product moat), long-term optimize complex query response time (UX improvement)."
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          {/* Diagnostic 1 */}
+          <div 
+            onClick={() => setIsQuantOpen(!isQuantOpen)}
+            className="bg-card rounded-xl border border-border p-4 shadow-sm cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-800 transition-all select-none space-y-2"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-base">📊</span>
+                <h4 className="text-xs font-bold text-foreground">
+                  {t("定量分析与金融计算：AIME 拥有极强的“工程化查准率”", "Quant & Math: AIME's Engineering Precision")}
+                </h4>
+              </div>
+              {isQuantOpen ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+            </div>
+            
+            {!isQuantOpen && (
+              <p className="text-[11px] text-muted-foreground line-clamp-1">
+                {t("AIME 结合确定性计算、公式模型，极大降低了纯大语言模型在数理计算上的幻觉风险。", "AIME integrates deterministic formulas and code execution to mitigate mathematical hallucinations.")}
+              </p>
+            )}
+
+            {isQuantOpen && (
+              <div className="text-[11px] text-muted-foreground leading-relaxed space-y-2 pt-1 animate-fade-in">
+                <p>
+                  {t(
+                    "AIME 可以在支持的产品环境中接入行情和金融数据库，并结合确定性计算、公式模型或代码执行能力，处理期权损益、杠杆 ETF 路径依赖、税务测算、组合风险等问题。",
+                    "AIME connects to live financial feeds and databases, combining deterministic formulas or code execution to process option spreads, leveraged ETF decay, tax optimization, and portfolio risk."
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "在涉及期权差价（Spreads）到期损益、杠杆损耗以及组合 VaR 计算时表现优异。通过自然语言结构化调用确定性逻辑显著降低了幻觉风险。*注：准确性仍取决于输入数据与数据源质量，模型本身不存储实时市场数据库。*",
+                    "AIME excels in option spreads payoff and portfolio VaR. Translating natural language into deterministic code mitigates LLM mathematical hallucinations. *Note: accuracy depends on input and data sources; the model itself does not store a persistent market database.*"
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "而 Gemini 3.5 即使可以通过内置的代码解释器编写 Python 脚本完成计算，也容易因无法实时获取最底层标准化参数，导致“合理但错误”的计算结果产生。",
+                    "While Gemini can run Python scripts, it lacks access to standardized real-time market inputs, resulting in 'logical but inaccurate' results."
+                  )}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Diagnostic 2 */}
+          <div 
+            onClick={() => setIsQualOpen(!isQualOpen)}
+            className="bg-card rounded-xl border border-border p-4 shadow-sm cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-800 transition-all select-none space-y-2"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-base">🧠</span>
+                <h4 className="text-xs font-bold text-foreground">
+                  {t("定性分析与逻辑推演：Gemini 3.5 展现了“长链条思辨广度”", "Qualitative Analysis: Gemini 3.5's Chain‑of‑Thought")}
+                </h4>
+              </div>
+              {isQualOpen ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+            </div>
+
+            {!isQualOpen && (
+              <p className="text-[11px] text-muted-foreground line-clamp-1">
+                {t("Gemini 拥有海量人类知识库的概率优势，展现出了极高的商业思维连贯性。", "Gemini dominates qualitative logical reasoning through broad multi-step reasoning stability.")}
+              </p>
+            )}
+
+            {isQualOpen && (
+              <div className="text-[11px] text-muted-foreground leading-relaxed space-y-2 pt-1 animate-fade-in">
+                <p className="font-semibold text-foreground/90">
+                  {t("Gemini 拥有压倒性的定性推演优势，得益于：", "Gemini dominates logical reasoning through:")}
+                </p>
+                <ul className="list-disc pl-4 space-y-1">
+                  <li>{t("跨领域的语义重组（Semantic Synthesis），建立不同领域概念之间的隐含联系。", "Semantic Synthesis: Establishes implicit linkages between diverse domain concepts.")}</li>
+                  <li>{t("Flash 架构极高 TPS 支撑多步任务中 Agent 的自动规划、执行与迭代。", "Agentic focus: Parallel agent layout, high TPS, scoring 83.6% on MCP Atlas benchmark.")}</li>
+                  <li>{t("战略模型内化（波特五力，LTV/CAC 等分析框架）。", "Built-in strategic tools: Native implementation of Porter's Five Forces, LTV/CAC, and SWOT frameworks.")}</li>
+                </ul>
+                <p>
+                  {t(
+                    "相比之下，AIME 此时更像一个数据罗列器。其定性推理受限于 RAG 机制（通常只能抓取研报中的零散段落进行拼接），显得较为教条、干瘪，缺乏连贯的逻辑主线与世界模型纵深。",
+                    "In contrast, AIME behaves like a flat data aggregator. Its qualitative logic is bound to rigid RAG lookups, presenting dry facts without a coherent narrative arc or world-model depth."
+                  )}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Diagnostic 3 (支持折叠表格，极大节省空间) */}
+          <div 
+            className="bg-card rounded-xl border border-border p-4 shadow-sm space-y-2 md:col-span-2"
+          >
+            <div 
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="flex items-center justify-between cursor-pointer select-none"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-base">🔍</span>
+                <h4 className="text-xs font-bold text-foreground">
+                  {t("数据检索与异动扫描：AIME 具备绝对的“底层数据护城河”", "Data Retrieval: AIME's Proprietary Data Moat")}
+                </h4>
+              </div>
+              {isSearchOpen ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+            </div>
+
+            {!isSearchOpen && (
+              <p className="text-[11px] text-muted-foreground line-clamp-1">
+                {t("AIME 将 Form 4、暗池大宗交易、期权 Sweeps 等异动数据原生接入，做到 100% 查准并向下穿透。", "Integrating Form 4 insider trades, dark pools, sweeps, and on-chain unlocks allows users to perform perfect filtering.")}
+              </p>
+            )}
+
+            {isSearchOpen && (
+              <div className="text-[11px] text-muted-foreground leading-relaxed space-y-3 pt-1 animate-fade-in">
+                <p>
+                  {t(
+                    "AIME 的优势源于其“数据管道 + 前端结构化看板”。用户可直接筛选、下钻、穿透异动。而 Gemini 3.5 即便外接 Web Search，也只能在互联网上抓取到零散、延迟且充斥噪音的二次报道，在数据颗粒度上存在天然代差。",
+                    "AIME's absolute advantage resides in its structural pipelines. Integrating Form 4, dark pools, sweeps, and unlocks allows users to perform perfect filtering. Gemini search is limited to delayed, noisy, second-hand summaries."
+                  )}
+                </p>
+
+                {/* Collapsible Table */}
+                <div className="overflow-x-auto border border-border rounded-lg">
+                  <table className="w-full text-left text-[10px] border-collapse">
+                    <thead>
+                      <tr className="bg-muted/40 text-muted-foreground border-b border-border">
+                        <th className="p-2 font-semibold">{t("数据类型", "Data Type")}</th>
+                        <th className="p-2 font-semibold text-emerald-600 dark:text-emerald-400">{t("AIME 结构化输出", "AIME Structured Output")}</th>
+                        <th className="p-2 font-semibold text-rose-500">{t("Gemini 3.5 Web Search", "Gemini 3.5 Web Search")}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      <tr>
+                        <td className="p-2 font-bold text-foreground">Form 4 {t("内部交易", "Insider Trades")}</td>
+                        <td className="p-2 text-emerald-600 dark:text-emerald-400">{t("支持完整字段检索与余额穿透", "Full field filtering & remaining balance")}</td>
+                        <td className="p-2 text-rose-500">{t("通常仅提供新闻网页二次摘要", "Secondary text summaries only")}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-bold text-foreground">{t("暗池 & 期权 Sweeps", "Dark Pools & Sweeps")}</td>
+                        <td className="p-2 text-emerald-600 dark:text-emerald-400">{t("流式结构化、毫秒级看板展示", "Live streaming structured feeds")}</td>
+                        <td className="p-2 text-rose-500">{t("仅能抓取零散网络讨论或帖子", "Noisy forum posts / delay")}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-bold text-foreground">{t("代币解锁/链上数据", "Token Unlocks / On-chain")}</td>
+                        <td className="p-2 text-emerald-600 dark:text-emerald-400">{t("直连链上事件，展示精准解锁图表", "On-chain unlocks mapping")}</td>
+                        <td className="p-2 text-rose-500">{t("缺乏工具，需人工查询浏览器", "Manual indexing on block explorers")}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Diagnostic 4 */}
+          <div 
+            onClick={() => setIsEQOpen(!isEQOpen)}
+            className="bg-card rounded-xl border border-border p-4 shadow-sm cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-800 transition-all select-none space-y-2"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-base">💬</span>
+                <h4 className="text-xs font-bold text-foreground">
+                  {t("情绪引导：Gemini 3.5 具有更高的“情商与沟通张力”", "Behavioral EQ: Gemini's High‑Empathy Guidance")}
+                </h4>
+              </div>
+              {isEQOpen ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+            </div>
+
+            {!isEQOpen && (
+              <p className="text-[11px] text-muted-foreground line-clamp-1">
+                {t("面对极端焦虑，Gemini 能更好地运用心理学和行为金融学纠偏，做到‘把话说到心里’。", "Facing distressed users, Gemini defuses anxiety with strong emotional containment.")}
+              </p>
+            )}
+
+            {isEQOpen && (
+              <div className="text-[11px] text-muted-foreground leading-relaxed space-y-2 pt-1 animate-fade-in">
+                <p>
+                  {t(
+                    "在开放式安慰、叙事表达、行为心理学类比上，Gemini 表现得更为自然、有温度。例如运用“幸存者偏差”解构社群噪音，并提出务实的 1% 归零预算规则。",
+                    "Facing traders experiencing panic over liquidation, Gemini shows stellar empathy, defusing distress with survivor bias explanations, setting clear parameters, and putting 'humanity' into financial logic."
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "相比之下，AIME 的话术更教条，字数平均比 Gemini 多出 200% 以上。在高压场景中常堆砌冗长的风险提示，容易在用户烦躁时触发抗拒。AIME 过于侧重‘情绪识别 -> 风险警示 -> 强行阻断交易’，难以建立深层信任。",
+                    "In contrast, AIME is pedantic—averaging 200% more output length than Gemini. Rigid risk disclaimers and text density risk alienating stressed users, relying too heavily on safety logic rather than emotional de-escalation."
+                  )}
+                </p>
+              </div>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* 3. AIME 核心产品与系统问题定义 */}
+      {/* ================================================================ */}
+      <section className="space-y-4">
+        <div className="border-b border-border pb-2">
+          <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4 text-rose-500" />
+            {t("AIME 核心产品与系统问题定义 (点击卡片查看痛点详情)", "AIME Core Product & System Problem Definitions (Click to view details)")}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          
+          {/* Issue 1 */}
+          <div 
+            onClick={() => setIsIssue1Open(!isIssue1Open)}
+            className="bg-card rounded-xl border border-border p-5 shadow-sm cursor-pointer hover:border-rose-300 dark:hover:border-rose-900 transition-all select-none flex flex-col justify-between space-y-2"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("延迟与可见性", "Latency & Visibility")}</h4>
+                </div>
+                {isIssue1Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+              </div>
+              <h3 className="text-xs font-bold text-foreground">
+                {t("复杂金融研究链路的高延迟导致用户信任流失", "High Latency in Multi‑Agent Flows")}
+              </h3>
+              
+              {!isIssue1Open && (
+                <p className="text-[11px] text-muted-foreground line-clamp-2">
+                  {t("多因子筛选、DCF 估值测算等多表财务关联任务，会导致平均延迟高达 40s 至 60s。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
+                </p>
               )}
-            </p>
+            </div>
+
+            {isIssue1Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
+                <p>
+                  {t(
+                    "面临复杂场景时，系统会触发长链条执行流（意图解析 -> 任务拆解 -> 调库检索 -> 本地运行代码 -> 建模/筛选 -> 校验）。这导致平均延迟高达 40s - 60s。此任务性质更接近一个研究工作流系统，而非简单的一问一答。",
+                    "Complex tasks trigger a long ReAct sequence (Intent parsed -> tool allocation -> SQL index -> local execution sandbox -> valuation -> advisory output), spiking latency to 40-60 seconds. This is a heavy workflow rather than simple Q&A."
+                  )}
+                </p>
+                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
+                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
+                  {t("等待期仅提供单一静态 Loading 动画，无渐进式中间状态输出，散户在瞬息万变的日内交易场景下极易直接流失。", "The UI shows only a generic loading spinner without intermediate state transitions, causing rapid drop-offs under real-time market pressure.")}
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* Issue 2 */}
+          <div 
+            onClick={() => setIsIssue2Open(!isIssue2Open)}
+            className="bg-card rounded-xl border border-border p-5 shadow-sm cursor-pointer hover:border-rose-300 dark:hover:border-rose-900 transition-all select-none flex flex-col justify-between space-y-2"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center gap-1.5">
+                  <Brain className="w-4 h-4" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("投研推理框架", "Reasoning Moat")}</h4>
+                </div>
+                {isIssue2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+              </div>
+              <h3 className="text-xs font-bold text-foreground">
+                {t("缺少一套可复用的“投研推理框架层”", "Absence of Reusable Reasoning Framework")}
+              </h3>
+
+              {!isIssue2Open && (
+                <p className="text-[11px] text-muted-foreground line-clamp-2">
+                  {t("AIME 具有极佳的硬核数据查准率，但在无结构定性分析场景中呈现‘数据真实但洞察浅’的现象。", "AIME excels in accuracy but defaults to flat descriptions in qualitative deduction scenarios.")}
+                </p>
+              )}
+            </div>
+
+            {isIssue2Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
+                <p>
+                  {t(
+                    "AIME 的长板在于基于 API 数据源的硬核查准率，但在非结构化文本分析场景中，回答高度扁平化、条目化，缺乏逻辑深度。与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
+                    "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
+                  )}
+                </p>
+                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
+                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
+                  {t("单纯的财务指标并不能直接形成投资决策。用户需要系统深度剖析商业模式演变、估值分化源头、共识偏误以及可行动的仓位策略。", "Raw multiples are not immediately actionable. Retailers seek comprehensive frameworks detailing structural moats, consensus consensus divergences, and trading actions.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Issue 3 */}
+          <div 
+            onClick={() => setIsIssue3Open(!isIssue3Open)}
+            className="bg-card rounded-xl border border-border p-5 shadow-sm cursor-pointer hover:border-rose-300 dark:hover:border-rose-900 transition-all select-none flex flex-col justify-between space-y-2"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center gap-1.5">
+                  <ShieldAlert className="w-4 h-4" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("沟通与 EQ 缺失", "EQ & Communication")}</h4>
+                </div>
+                {isIssue3Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+              </div>
+              <h3 className="text-xs font-bold text-foreground">
+                {t("高情绪场景下说教式的合规提示导致沟通摩擦", "Regulatory Over-compliance in Panic Situations")}
+              </h3>
+
+              {!isIssue3Open && (
+                <p className="text-[11px] text-muted-foreground line-clamp-2">
+                  {t("面对保证金追加、爆仓、踏空 FOMO 等极端情绪场景，AI 语调高冷说教，缺乏同理心。", "Failing to read localized retail trading sentiment (e.g., r/wallstreetbets) adds friction during crisis moments.")}
+                </p>
+              )}
+            </div>
+
+            {isIssue3Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
+                <p>
+                  {t(
+                    "AIME 缺少一套‘情绪识别 -> 行为金融纠偏 -> 本土化沟通 -> 风险动作落地’的干预层。面临爆仓或 FOMO 焦虑时，AIME 现有话术过于刻板说教，常以公式化警告应对，虽然方向绝对正确，但缺失了情绪承接与可执行的下一步柔性风控方案。",
+                    "AIME lacks a holistic behavioral intervention chain. When traders face margin calls or FOMO, AIME defaults to formulaic compliance warnings, missing empathetic de-escalation or actionable, low-friction wind-down pathways."
+                  )}
+                </p>
+                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
+                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
+                  {t("AI 缺乏对 HODL, Diamond Hands, Ape-in 等欧美散户常用本土黑话和流行的感知，在最需要配合降风控的危机时刻难以与用户建立深层信任。", "AIME fails to read retail lingo (HODL, Diamond Hands), adding systemic communication friction where compliance must meet active trust.")}
+                </div>
+              </div>
+            )}
+          </div>
+
         </div>
-      </div>
-    </div>
-  );
-}
+      </section>
 
-// ============================================================
-// Problem Card Component
-// ============================================================
-function ProblemCard({ problem }: { problem: Problem }) {
-  const { t, lang } = useLanguage();
-
-  const severityConfig = {
-    high: { label: t("高", "High"), color: "bg-rose-100 text-rose-700 border-rose-200" },
-    medium: { label: t("中", "Medium"), color: "bg-amber-100 text-amber-700 border-amber-200" },
-    low: { label: t("低", "Low"), color: "bg-blue-100 text-blue-700 border-blue-200" },
-  };
-
-  const config = severityConfig[problem.severity];
-
-  return (
-    <div className="bg-card rounded-xl border border-border p-5 shadow-sm hover:shadow-md transition-shadow duration-150">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1">
-          <div className="flex items-center gap-3 mb-2">
-            <span className={`px-2 py-0.5 rounded text-xs font-medium border ${config.color}`}>
-              {config.label}
-            </span>
-            <span className="text-xs text-muted-foreground">
-              {lang === "zh" ? problem.category : problem.categoryEn}
-            </span>
-          </div>
-          <h4 className="text-sm font-semibold text-foreground">
-            {lang === "zh" ? problem.title : problem.titleEn}
+      {/* Final Wrap-up Card */}
+      <div className="bg-indigo-50 dark:bg-indigo-950/20 rounded-xl p-5 border border-indigo-100 dark:border-indigo-900/40 flex flex-col md:flex-row items-center gap-4">
+        <Info className="w-7 h-7 text-indigo-600 dark:text-indigo-400 shrink-0" />
+        <div className="space-y-1">
+          <h4 className="text-xs font-bold text-foreground">
+            {t("未来改进战略思考", "Strategic Action Points for AIME")}
           </h4>
-          <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-            {lang === "zh" ? problem.description : problem.descriptionEn}
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            {t(
+              "真正优秀的垂直金融大模型，不应仅仅充当静态财务指标的‘数据罗列器’，更应融合 AIME 底层不可替代的‘硬核查准率数据护城河’与通用大模型的‘长链思辨框架层’和‘同理心沟通交互（EQ）’。通过缩短 ReAct 长调用链路（展示中间状态、流式输出）、引入投研推理逻辑模板、以及本土化金融沟通，才能在残酷的市场竞争中与高频波动场景中建立深层的用户信任。",
+              "A mature domain assistant must synergize AIME's engineering-level accuracy with Gemini's narrative depth and empathy. Lowering interface latency (via streaming intermediate nodes), integrating reasoning loops, and addressing retail sentiments (r/wallstreetbets) are pivotal to transforming raw numbers into highly actionable, trusted financial intelligence."
+            )}
           </p>
         </div>
       </div>
 
-      {/* Solution */}
-      <div className="mt-4 pt-3 border-t border-border">
-        <div className="flex items-start gap-2">
-          <ArrowRight className="w-3.5 h-3.5 text-indigo-500 mt-0.5 shrink-0" />
-          <div>
-            <span className="text-xs font-medium text-indigo-600">
-              {t("改进方案", "Solution")}
-            </span>
-            <p className="mt-0.5 text-xs text-foreground leading-relaxed">
-              {lang === "zh" ? problem.solution : problem.solutionEn}
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
