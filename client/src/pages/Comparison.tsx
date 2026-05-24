@@ -8,7 +8,7 @@ export default function Comparison() {
     {
       id: "quantitative",
       icon: <BarChart3 className="w-5 h-5" />,
-      titleZh: "类别一：情景推演&模拟计算",
+      titleZh: "类别一：模拟推演&金融计算",
       titleEn: "Category 1: Scenario simulation & financial calculation",
       subtitleZh: "Simulation & calculation",
       subtitleEn: "Simulation & calculation",
@@ -16,7 +16,7 @@ export default function Comparison() {
       iconBg: "bg-blue-100 text-blue-700",
       scoreZh: "AIME 胜 11 例 | 平 3 例 | Gemini 3.5 Flash 胜 1 例",
       scoreEn: "AIME Wins 11 | Ties 3 | Gemini 3.5 Flash Wins 1",
-      summaryZh: "AIME 在数学计算中展现出了极高的工程精度。由于 AIME 底层集成了高频行情计算模块，在处理期权、税收、杠杆损耗等场景时，能够调用确定性的数理公式进行解算，规避了大模型的\"计算幻觉\"；而 Gemini 3.5 虽可运行 Python，但因缺乏实时底层金融参数（如实时隐波、历史复权价），导致其计算基数不准。",
+      summaryZh: "AIME 在金融数学计算中展现出了极高的工程精度。由于 AIME 底层集成了高频行情计算模块，在处理期权、税收、杠杆损耗等场景时，能够调用确定性的金融公式进行解算，规避了大模型的\"计算幻觉\"；而 Gemini 3.5 虽可运行 Python，但因缺乏实时底层金融参数（如实时隐波、历史复权价），导致其计算基数不准。",
       summaryEn: "AIME demonstrates extremely high engineering precision in quantitative calculations. With its integrated high-frequency market computation module, AIME can invoke deterministic mathematical formulas for options, tax, and leverage decay scenarios, avoiding LLM 'calculation hallucinations'. Gemini 3.5, while capable of running Python, lacks real-time underlying financial parameters (like real-time IV, historical adjusted prices), leading to inaccurate calculation bases.",
       prosZh: [
         "计算零幻觉：直接将自然语言转化为确定性计算脚本，输出的数据精准度达到机构级。",
@@ -78,8 +78,8 @@ Your exact net loss is $4.50 per share, which equals $450.00 loss per contract.
     {
       id: "qualitative",
       icon: <Brain className="w-5 h-5" />,
-      titleZh: "类别二：定性分析&逻辑推理",
-      titleEn: "Category 2: Qualitative & Logic",
+      titleZh: "类别二：定性分析&逻辑推演",
+      titleEn: "Category 2: Qualitative & Projection",
       subtitleZh: "Qualitative & Logic",
       subtitleEn: "Qualitative & Logic",
       colorClass: "bg-purple-50 border-purple-200",
