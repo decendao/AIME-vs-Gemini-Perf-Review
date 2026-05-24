@@ -101,7 +101,7 @@ export default function Overview() {
           </p>
           <p className="text-sm text-foreground leading-relaxed mt-3">
             {t(
-              "本评测体系建立在\"\u53cc向解构\"的坐标系之上：亲和理解力（UX/EQ）vs. 硬核金融数理模型（IQ）",
+              "在设计思路上，我综合结合了问题常见度，计算复杂度，专业程度，跨界程度，以及情绪化程度等综合考量维度，确保58个问题能最大化个兼顾 1.考验模型综合能力  2.散户真实需求 3.体现我个人对金融理解 的样本代表",
               "This evaluation framework is built on a 'dual deconstruction' coordinate system: User Empathy (UX/EQ) vs. Hardcore Financial Quantitative Models (IQ)"
             )}
           </p>
@@ -170,7 +170,7 @@ export default function Overview() {
         <div className="bg-card rounded-xl border border-border p-6 shadow-sm mt-3">
           <p className="text-sm text-foreground leading-relaxed mb-4">
             {t(
-              "针对本次评测，我原创的设计超过80个问题库，最终筛选并优化出 58 个高价值测试问题。在设计思路上，我综合结合了问题常见度，计算复杂度，专业程度，跨界程度，以及情绪化程度等综合考量维度，确保58个问题能最大化个兼顾 1.考验模型综合能力  2.散户真实需求 3.体现我个人对金融理解 的样本代表。",
+              "我先原创的准备了超过80个问题题库，借助Gemini按照我的设计思路进行打分和评价相似程度，最终筛选并优化出 58 个高价值测试问题。在设计思路上，我综合结合了问题常见度，计算复杂度，专业程度，跨界程度，以及情绪化程度等综合考量维度，确保58个问题能最大化个兼顾 1.考验模型综合能力  2.散户真实需求 3.体现我个人对金融理解 的样本代表。",
               "This evaluation selected and optimized 58 high-value test cases. The framework abandons traditional 'single-point market Q&A', pivoting toward deep scenarios combining CFA portfolio management theory with behavioral finance bias control."
             )}
           </p>
