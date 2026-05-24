@@ -315,7 +315,36 @@ export default function Methodology() {
   );       // 🌟 闭合 return (
 }         // 🌟 闭合 export default function Methodology() {
       {/* ================================================================ */}
-    
+
+
+    // Section Header Component (🌟 新增内置组件，解决未定义问题)
+// ============================================================
+function SectionHeader({
+  number,
+  title,
+  color,
+}: {
+  number: string;
+  title: string;
+  color: "indigo" | "violet" | "amber";
+}) {
+  const colorMap = {
+    indigo: "bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400",
+    violet: "bg-violet-50 text-violet-600 dark:bg-violet-950/40 dark:text-violet-400",
+    amber: "bg-amber-50 text-amber-600 dark:bg-amber-950/40 dark:text-amber-400",
+  };
+
+  const c = colorMap[color] || colorMap.indigo;
+
+  return (
+    <div className="flex items-center gap-3">
+      <div className={`w-8 h-8 rounded-lg ${c} flex items-center justify-center font-mono font-bold text-sm shrink-0`}>
+        {number}
+      </div>
+      <h3 className="text-base font-bold text-foreground leading-tight">{title}</h3>
+    </div>
+  );
+}
 // ============================================================
 // Motivation Card Component
 // ============================================================
