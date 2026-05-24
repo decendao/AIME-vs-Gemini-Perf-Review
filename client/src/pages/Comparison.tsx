@@ -330,7 +330,7 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
             <div className="bg-white rounded-lg border border-red-200 p-4">
               <div className="flex items-center gap-2 mb-3">
                 <TrendingDown className="w-4 h-4 text-red-600" />
-                <h4 className="text-sm font-bold text--700">
+                <h4 className="text-sm font-bold text-red-700">
                   {t("劣势 (Cons)", "Weaknesses (Cons)")}
                 </h4>
               </div>
