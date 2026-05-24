@@ -105,7 +105,7 @@ export default function Conclusion() {
             {/* Dimension 1 */}
             <div className="bg-muted/10 rounded-lg p-2.5 border border-border/50">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-[11px] font-bold text-foreground">📊 {t("模拟计算", "Simulate & Calculate")}</span>
+                <span className="text-[11px] font-bold text-foreground">📊 {t("情景模拟&金融计算", "Simulate & Calculate")}</span>
                 <span className="text-[9px] text-muted-foreground">15 Cases</span>
               </div>
               <div className="space-y-0.5 text-[10px]">
