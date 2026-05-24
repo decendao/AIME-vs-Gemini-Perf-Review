@@ -570,7 +570,7 @@ export default function Conclusion() {
 
               {!isOpt2Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("将后台 Agent 长链路的工作流转化为可感知、可信赖、具有科技感的渐进式交互体验。", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
+                  {t("设置“开发日志 / 极客模式”开关，默认在前端自动包装为散户看得懂的结构化步骤，渲染为排版整洁、具备高阅读性的卡片文本", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
                 </p>
               )}
             </div>
@@ -579,12 +579,12 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "问题的本质不是延迟，而是黑盒。AIME 需要暴露其思考链，展示阶段状态，让部分数据先行返回，让漫长的物理等待变为专业、可信的投研展现。",
+                    "交互界面的“极客外溢”：CoT 的呈现缺乏一层面向用户的“翻译包装”。直接将 raw JSON、bash 管道符命令和未转义的 stdout 扔给散户，有损体验。",
                     "The issue isn't the latency itself, but the lack of visibility. Exposing the reasoning chain transforms waiting times into active trust."
                   )}
                 </p>
                 
-                {/* 渐进式思维链打勾模拟组件 */}
+                {/* 引入“投研化”步骤组件 */}
                 <div className="p-2 rounded-lg bg-indigo-50/30 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-950/30 space-y-1 font-mono text-[9px]">
                   <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                     <Check className="w-3 h-3 shrink-0" /> {t("[✓] 正在实时穿透最新 SEC Form 4 披露文件...", "[✓] Querying SEC Form 4 database...")}
