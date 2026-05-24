@@ -3,7 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Trophy, Target, TrendingUp, AlertTriangle, Brain, 
   Search, MessageSquare, Clock, ShieldAlert, Sparkles, Scale, Info, Check, X,
-  ChevronDown, ChevronUp
+  ChevronDown, ChevronUp, Layers, Activity
 } from "lucide-react";
 
 // ============================================================
@@ -13,6 +13,10 @@ import {
 export default function Conclusion() {
   const { t } = useLanguage();
 
+  // 🌟 新增：潜在优化思路的折叠控制状态
+  const [isOpt1Open, setIsOpt1Open] = useState(false);
+  const [isOpt2Open, setIsOpt2Open] = useState(false);
+  const [isOpt3Open, setIsOpt3Open] = useState(false);
   // 深度诊断卡片折叠状态
   const [isQuantOpen, setIsQuantOpen] = useState(false);
   const [isQualOpen, setIsQualOpen] = useState(false);
@@ -487,6 +491,153 @@ export default function Conclusion() {
                 <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
                   <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
                   {t("AI 缺乏对 HODL, Diamond Hands, Ape-in 等欧美散户常用本土黑话和流行的感知，在最需要配合降风控的危机时刻难以与用户建立深层信任。", "AIME fails to read retail lingo (HODL, Diamond Hands), adding systemic communication friction where compliance must meet active trust.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+          {/* 4. 🌟 潜在优化方向：代际演进与突破（交互折叠设计） */}
+      {/* ================================================================ */}
+      <section className="space-y-4">
+        <div className="border-b border-border pb-2">
+          <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
+            <Activity className="w-4 h-4 text-indigo-500" />
+            {t("💡 潜在优化方向：从“数据工具”向“财富导航员”的代际演进", "💡 Strategic Roadmap: Evolving from Tool to Advisor")}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          {/* Strategy 1 */}
+          <div 
+            onClick={() => setIsOpt1Open(!isOpt1Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-2 ${isOpt1Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                <div className="flex items-center gap-1.5">
+                  <Layers className="w-4 h-4" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("架构演进", "Architecture")}</h4>
+                </div>
+                {isOpt1Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+              </div>
+              <h3 className="text-xs font-bold text-foreground">
+                {t("思路1：部署“金融多智能体混合专家路由系统”（MoE Router）", "MoE Financial Router Integration")}
+              </h3>
+              
+              {!isOpt1Open && (
+                <p className="text-[11px] text-muted-foreground line-clamp-2">
+                  {t("在网关层部署智能意图路由层，将“硬核量化场景”与“深度定性与行为场景”分流处理，兼顾数据与逻辑。", "Deploy an intent-based router to split quantitative sandboxes and qualitative reasoning chains.")}
+                </p>
+              )}
+            </div>
+
+            {isOpt1Open && (
+              <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
+                <p>
+                  {t(
+                    "通过意图分流，让硬核计算由 AIME Python 沙盒 100% 承接（绝对壁垒区），而将产业链逻辑与行为共情路由至大参数模型，由 RAG 与商业模版深度重组。",
+                    "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
+                  )}
+                </p>
+                <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-2 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-[10px] leading-relaxed">
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-0.5">🌟 {t("投研推理链深度拓展", "Complete Research Chain")}</span>
+                  {t("让 AI 摆脱简单的“数据陈列”，深度切入：“数据 ➔ 假设 ➔ 机制 ➔ 反证 ➔ 情景 ➔ 投资动作”的完整投研链路，实现从回答第1/2层到攻克第3层的代际跨越。", "Enable the AI to build structured frameworks: Data ➔ Hypothesis ➔ Mechanism ➔ Disproof ➔ Scenarios ➔ Investment Actions.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Strategy 2 */}
+          <div 
+            onClick={() => setIsOpt2Open(!isOpt2Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-2 ${isOpt2Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("感知交互", "Interaction UX")}</h4>
+                </div>
+                {isOpt2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+              </div>
+              <h3 className="text-xs font-bold text-foreground">
+                {t("思路2：引入“渐进式思维链展示”与异步渲染机制", "Progressive CoT Display & Async Rendering")}
+              </h3>
+
+              {!isOpt2Open && (
+                <p className="text-[11px] text-muted-foreground line-clamp-2">
+                  {t("将后台 Agent 长链路的工作流转化为可感知、可信赖、具有科技感的渐进式交互体验。", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
+                </p>
+              )}
+            </div>
+
+            {isOpt2Open && (
+              <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
+                <p>
+                  {t(
+                    "问题的本质不是延迟，而是黑盒。AIME 需要暴露其思考链，展示阶段状态，让部分数据先行返回，让漫长的物理等待变为专业、可信的投研展现。",
+                    "The issue isn't the latency itself, but the lack of visibility. Exposing the reasoning chain transforms waiting times into active trust."
+                  )}
+                </p>
+                
+                {/* 渐进式思维链打勾模拟组件 */}
+                <div className="p-2 rounded-lg bg-indigo-50/30 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-950/30 space-y-1 font-mono text-[9px]">
+                  <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <Check className="w-3 h-3 shrink-0" /> {t("[✓] 正在实时穿透最新 SEC Form 4 披露文件...", "[✓] Querying SEC Form 4 database...")}
+                  </div>
+                  <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <Check className="w-3 h-3 shrink-0" /> {t("[✓] 正在调取 Python 财务计算引擎核对持股盈亏...", "[✓] Computing executive balances via Python engine...")}
+                  </div>
+                  <div className="text-indigo-600 dark:text-indigo-400 flex items-center gap-1 animate-pulse">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping inline-block shrink-0"></span>
+                    {t("[ ] 正在将多维数据渲染为可交互的财务损益卡片...", "[ ] Rendering interactive financial cards...")}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Strategy 3 */}
+          <div 
+            onClick={() => setIsOpt3Open(!isOpt3Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-2 ${isOpt3Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                <div className="flex items-center gap-1.5">
+                  <ShieldAlert className="w-4 h-4" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("行为陪伴", "EQ Companion")}</h4>
+                </div>
+                {isOpt3Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
+              </div>
+              <h3 className="text-xs font-bold text-foreground">
+                {t("思路3：引入“情绪承接 ➔ 本土化解偏 ➔ 硬核风控动作落地”干预闭环", "Behavioral Finance Intervention Closed-Loop")}
+              </h3>
+
+              {!isOpt3Open && (
+                <p className="text-[11px] text-muted-foreground line-clamp-2">
+                  {t("先共情用户、再拆解偏误，以柔性的表达配合极其坚定的风控硬边界阻断错误交易。", "De-escalate panic trading with strong retail sentiment understanding and rigid risk rules.")}
+                </p>
+              )}
+            </div>
+
+            {isOpt3Open && (
+              <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
+                <p>
+                  {t(
+                    "既能用用户听得进去、甚至接地气（Reddit 梗）的柔性语言承接情绪，又能坚定阻断复仇交易和过度加杠杆，并将沟通落脚到可执行的头寸缩减、原始投资逻辑证伪与仓位风险预算上。",
+                    "De-escalate high-emotion trading using retail lingo, firmly block revenge trades, and route decisions back to risk budgets, stop-loss ratios, and liquidation checks."
+                  )}
+                </p>
+                <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-2 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-[10px] italic">
+                  {t(
+                    "“我理解你现在想补仓，因为亏损会让人想夺回控制感。但现在补仓不是策略，是复仇交易。我们先暂停，核对三个指标：保证金安全、仓位承受上限、以及初始逻辑是否被证伪。”",
+                    "\"I know you want to average down because losing feels like losing control. But right now, that is a revenge trade, not a strategy. Let's pause and check: margin safety, leverage ceiling, and thesis invalidation.\""
+                  )}
                 </div>
               </div>
             )}
