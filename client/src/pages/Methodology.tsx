@@ -18,12 +18,12 @@ export default function Methodology() {
       {/* Page Header */}
       <div>
         <h2 className="text-2xl font-bold text-foreground">
-          {t("问题设计思路", "Question Design Methodology")}
+          {t("测评问题设计思路", "Question Design Methodology")}
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
           {t(
-            "散户行为洞察 × CFA 专业理论体系",
-            "Retail Behavior Insights × CFA Professional Theory"
+            "散户真实需求 × 模型能力考验 x 我的金融理解表达",
+            "Retail Behavior Insights × Model Performance test x My own Financial Intelligence"
           )}
         </p>
       </div>
@@ -42,7 +42,7 @@ export default function Methodology() {
             </h3>
             <p className="mt-2 text-sm text-foreground leading-relaxed">
               {t(
-                "我从自身经历出发，将我10多年作为散户「散户交易行为心理学」的自身痛点和来自社媒社群的洞察 与 CFA体系下的专业知识点融合，并代入具体的主流交易标的，全面考察 Agent 在「亲和理解力（User Empathy）」与「金融模型深度（Quantitative Rigor）」上的综合边界。",
+                "我从自身过12年交易生涯出发，结合了问题常见度，计算复杂度，专业程度，跨界程度，以及情绪化程度等综合考量维度，确保问题能全面考察 Agent 在 亲和理解力（User Empathy）、金融模型深度（Quantitative Rigor）、时间感知、交叉检验、多模态协同等领域的表现。",
                 "Drawing from my 10+ years of personal retail trading experience, I fuse behavioral pain points and social media community insights with CFA-level professional knowledge, incorporating mainstream trading instruments to comprehensively examine the Agent's boundary between 'User Empathy' and 'Quantitative Rigor'."
               )}
             </p>
