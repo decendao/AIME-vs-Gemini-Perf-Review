@@ -31,8 +31,8 @@ const FINAL_RESULTS = {
 
 // Dimension breakdown data
 const DIMENSION_DATA_ZH = [
-  { dimension: "定量分析", aimeWins: 11, ties: 3, geminiWins: 1, total: 15 },
-  { dimension: "定性分析", aimeWins: 5, ties: 6, geminiWins: 4, total: 15 },
+  { dimension: "模拟计算", aimeWins: 11, ties: 3, geminiWins: 1, total: 15 },
+  { dimension: "分析推演", aimeWins: 5, ties: 6, geminiWins: 4, total: 15 },
   { dimension: "数据检索", aimeWins: 12, ties: 1, geminiWins: 2, total: 15 },
   { dimension: "情绪引导", aimeWins: 4, ties: 5, geminiWins: 4, total: 13 },
 ];
@@ -150,7 +150,7 @@ export default function Overview() {
             </div>
             <p className="text-xs text-foreground leading-relaxed">
               {t(
-                "Google 于 2025 年发布的最新一代快速推理模型。主打并行 Agent 编排、极速 TPS（每秒输出 Token 数）以及原生多模态上下文理解，在通用逻辑推理、代码运行（Code Interpreter）以及长文本重组方面代表了当前通用大模型的一线水平。",
+                "Google最新一代快速推理模型。主打并行 Agent 编排、极速 TPS（每秒输出 Token 数）以及原生多模态上下文理解，在通用逻辑推理、代码运行（Code Interpreter）以及长文本重组方面代表了当前通用大模型的一线水平。",
                 "Google's latest-generation fast reasoning model released in 2025. Features parallel Agent orchestration, ultra-fast TPS, and native multimodal context understanding, representing the frontier of general LLMs in logical reasoning, Code Interpreter, and long-text restructuring."
               )}
             </p>
@@ -170,7 +170,7 @@ export default function Overview() {
         <div className="bg-card rounded-xl border border-border p-6 shadow-sm mt-3">
           <p className="text-sm text-foreground leading-relaxed mb-4">
             {t(
-              "本次评测共筛选并优化出 58 个高价值测试案例 (Cases)。在体系设计上，方案抛弃了传统的\"单点行情问答\"，转向结合 CFA 投资组合管理理论与行为金融学偏误控制的深度场景。",
+              "针对本次评测，我原创的设计超过80个问题库，最终筛选并优化出 58 个高价值测试问题。在设计思路上，我综合结合了问题常见度，计算复杂度，专业程度，跨界程度，以及情绪化程度等综合考量维度，确保58个问题能最大化个兼顾 1.考验模型综合能力  2.散户真实需求 3.体现我个人对金融理解 的样本代表。",
               "This evaluation selected and optimized 58 high-value test cases. The framework abandons traditional 'single-point market Q&A', pivoting toward deep scenarios combining CFA portfolio management theory with behavioral finance bias control."
             )}
           </p>
