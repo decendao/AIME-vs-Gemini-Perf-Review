@@ -22,7 +22,7 @@ function Router() {
         <Route path="/methodology" component={Methodology} />
         <Route path="/details" component={Details} />
         <Route path="/comparison" component={Comparison} />
-        <Route path="/404" component={NotFound} />
+        <Route path="/conclusion" component={Conclusion} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
