@@ -3,109 +3,6 @@ import { BarChart3, Brain, Search, MessageCircle, TrendingUp, TrendingDown, Ligh
 
 export default function Comparison() {
   const { t, lang } = useLanguage();
-
-
-  {/* ----------------- 新插入的六维评判总纲模块 开始 ----------------- */}
-      <div className="bg-card rounded-2xl border border-border p-6 shadow-sm">
-        <div className="mb-6">
-          <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
-            <Layers className="w-5 h-5 text-indigo-500" />
-            {t("六维量化评判比较体系", "6-Dimensional Evaluation & Comparison Framework")}
-          </h2>
-          <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-            {t(
-              "本仪表盘基于 58 个精心设计的双语评测案例，从六个核心维度深入剖析垂直金融大模型与通用大模型的技术与场景边界，力求多维度还原投资者在真实投研中的极致痛点。", 
-              "This dashboard benchmarks 58 bilingual cases across 6 core dimensions, mapping the boundaries of vertical financial agents and generalist models under realistic trading scenarios."
-            )}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {/* 1. 用户理解共情力 */}
-          <div className="bg-rose-50/40 dark:bg-rose-950/10 rounded-xl p-4 border border-rose-100 dark:border-rose-900/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-rose-700 dark:text-rose-400 font-bold text-xs mb-1.5">
-                <SmilePlus className="w-4 h-4 text-rose-500" />
-                {t("1. 用户理解共情力", "User Empathy & EQ")}
-              </div>
-              <p className="text-[10px] text-rose-600/90 dark:text-rose-400/80 leading-relaxed">
-                {t("精准识别散户的焦虑与狂热（如错失恐惧 FOMO、亏损溢价等），建立有温度、具备行为财务学常识的安全心理解锁与主动决策阻断。", "Accurately diagnose and address retail FOMO and loss aversion with empathetic, behavioral-finance-based psychological intervention.")}
-              </p>
-            </div>
-          </div>
-
-          {/* 2. 金融模型计算能力 */}
-          <div className="bg-blue-50/40 dark:bg-blue-950/10 rounded-xl p-4 border border-blue-100 dark:border-blue-900/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xs mb-1.5">
-                <Calculator className="w-4 h-4 text-blue-500" />
-                {t("2. 金融模型计算能力", "Quantitative Modeling & Math")}
-              </div>
-              <p className="text-[10px] text-blue-600/90 dark:text-blue-400/80 leading-relaxed">
-                {t("考核期权 Greeks 实时敏感度、多标的资产协方差矩阵、最大回撤、三阶段 DCF 公允价格贴现等机构级量化公式的零幻觉算力。", "Assess mathematical execution on option Greeks, covariance matrices, portfolio max drawdowns, and 3-stage DCF discount formulas without hallucinations.")}
-              </p>
-            </div>
-          </div>
-
-          {/* 3. 时间感知度 */}
-          <div className="bg-amber-50/40 dark:bg-amber-950/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-xs mb-1.5">
-                <Clock className="w-4 h-4 text-amber-500" />
-                {t("3. 时间感知度", "Temporal & Cycle Awareness")}
-              </div>
-              <p className="text-[10px] text-amber-600/90 dark:text-amber-400/80 leading-relaxed">
-                {t("对齐当前宏观、利率及减半周期，防范通用大模型跨时空逻辑拼凑（时间穿梭幻觉），保证投研时效逻辑的完全闭环。", "Align with current macro-cycles, interest rates, and halving milestones to prevent cross-temporal logical hallucinations in research.")}
-              </p>
-            </div>
-          </div>
-
-          {/* 4. 数据新闻检索能力 */}
-          <div className="bg-emerald-50/40 dark:bg-emerald-950/10 rounded-xl p-4 border border-emerald-100 dark:border-emerald-900/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs mb-1.5">
-                <Database className="w-4 h-4 text-emerald-500" />
-                {t("4. 数据新闻检索能力", "Data & News Retrieval")}
-              </div>
-              <p className="text-[10px] text-emerald-600/90 dark:text-emerald-400/80 leading-relaxed">
-                {t("考核对非结构化、封闭数据库（如 SEC Form 4、代币解锁、暗池大宗流、期货交易所库存）的秒级检索查准率（RAG）和深度解析力。", "Verify RAG accuracy and extraction depth from unstructured or private sources like SEC Form 4, token unlocks, and dark pool flow.")}
-              </p>
-            </div>
-          </div>
-
-          {/* 5. 合规风控把控度 */}
-          <div className="bg-violet-50/40 dark:bg-violet-950/10 rounded-xl p-4 border border-violet-100 dark:border-violet-900/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-violet-700 dark:text-violet-400 font-bold text-xs mb-1.5">
-                <ShieldAlert className="w-4 h-4 text-violet-500" />
-                {t("5. 合规风控把控度", "Compliance & Risk Management")}
-              </div>
-              <p className="text-[10px] text-violet-600/90 dark:text-violet-400/80 leading-relaxed">
-                {t("严格监控非法投顾行为红线（非金融Advice警示），精准核算 Wash-Sale 处罚、维持保证金爆仓等刚性个人风控边界。", "Monitor strict compliance borders, evaluate wash-sale tax implications, and dynamically calculate margin call liquidation levels.")}
-              </p>
-            </div>
-          </div>
-
-          {/* 6. 多模态协同能力 */}
-          <div className="bg-sky-50/40 dark:bg-sky-950/10 rounded-xl p-4 border border-sky-100 dark:border-sky-900/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-sky-700 dark:text-sky-400 font-bold text-xs mb-1.5">
-                <Layers className="w-4 h-4 text-sky-500" />
-                {t("6. 多模态协同能力", "Multi-modal Synergy")}
-              </div>
-              <p className="text-[10px] text-sky-600/90 dark:text-sky-400/80 leading-relaxed">
-                {t("评估在输出结果时，是否能将文字逻辑阐述、关系型数据表、高交互损益图表等多维度表现方式，实现同框式的无缝协同展现。", "Assess the integration of textual narratives, relationship tables, and interactive payoff charts concurrently in a single layout.")}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* 下方总结栏 */}
-        <div className="text-center pt-4 border-t border-border text-[11px] text-muted-foreground leading-relaxed">
-          {t("通过这 6 大量化评估维度对 58 个典型 Cases 进行全方位评判比较，不仅深度考验了 Agent 的硬核极限，更精准折射出团队对真实交易场景及专业金融体系的深度理解力。", "Using these 6 quantitative dimensions to comprehensively benchmark the 58 cases, this framework not only stresses the models to their limits but also reflects our deep understanding of the retail ecosystem and rigorous finance.")}
-        </div>
-      </div>
-      {/* ----------------- 新插入的六维评判总纲模块 结束 ----------------- */}
   
   const categories = [
     {
@@ -367,6 +264,110 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
   ];
 
   return (
+
+
+{/* ----------------- 新插入的六维评判总纲模块 开始 ----------------- */}
+      <div className="bg-card rounded-2xl border border-border p-6 shadow-sm">
+        <div className="mb-6">
+          <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
+            <Layers className="w-5 h-5 text-indigo-500" />
+            {t("六维量化评判比较体系", "6-Dimensional Evaluation & Comparison Framework")}
+          </h2>
+          <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+            {t(
+              "本仪表盘基于 58 个精心设计的双语评测案例，从六个核心维度深入剖析垂直金融大模型与通用大模型的技术与场景边界，力求多维度还原投资者在真实投研中的极致痛点。", 
+              "This dashboard benchmarks 58 bilingual cases across 6 core dimensions, mapping the boundaries of vertical financial agents and generalist models under realistic trading scenarios."
+            )}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          {/* 1. 用户理解共情力 */}
+          <div className="bg-rose-50/40 dark:bg-rose-950/10 rounded-xl p-4 border border-rose-100 dark:border-rose-900/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-rose-700 dark:text-rose-400 font-bold text-xs mb-1.5">
+                <SmilePlus className="w-4 h-4 text-rose-500" />
+                {t("1. 用户理解共情力", "User Empathy & EQ")}
+              </div>
+              <p className="text-[10px] text-rose-600/90 dark:text-rose-400/80 leading-relaxed">
+                {t("精准识别散户的焦虑与狂热（如错失恐惧 FOMO、亏损溢价等），建立有温度、具备行为财务学常识的安全心理解锁与主动决策阻断。", "Accurately diagnose and address retail FOMO and loss aversion with empathetic, behavioral-finance-based psychological intervention.")}
+              </p>
+            </div>
+          </div>
+
+          {/* 2. 金融模型计算能力 */}
+          <div className="bg-blue-50/40 dark:bg-blue-950/10 rounded-xl p-4 border border-blue-100 dark:border-blue-900/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xs mb-1.5">
+                <Calculator className="w-4 h-4 text-blue-500" />
+                {t("2. 金融模型计算能力", "Quantitative Modeling & Math")}
+              </div>
+              <p className="text-[10px] text-blue-600/90 dark:text-blue-400/80 leading-relaxed">
+                {t("考核期权 Greeks 实时敏感度、多标的资产协方差矩阵、最大回撤、三阶段 DCF 公允价格贴现等机构级量化公式的零幻觉算力。", "Assess mathematical execution on option Greeks, covariance matrices, portfolio max drawdowns, and 3-stage DCF discount formulas without hallucinations.")}
+              </p>
+            </div>
+          </div>
+
+          {/* 3. 时间感知度 */}
+          <div className="bg-amber-50/40 dark:bg-amber-950/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-xs mb-1.5">
+                <Clock className="w-4 h-4 text-amber-500" />
+                {t("3. 时间感知度", "Temporal & Cycle Awareness")}
+              </div>
+              <p className="text-[10px] text-amber-600/90 dark:text-amber-400/80 leading-relaxed">
+                {t("对齐当前宏观、利率及减半周期，防范通用大模型跨时空逻辑拼凑（时间穿梭幻觉），保证投研时效逻辑的完全闭环。", "Align with current macro-cycles, interest rates, and halving milestones to prevent cross-temporal logical hallucinations in research.")}
+              </p>
+            </div>
+          </div>
+
+          {/* 4. 数据新闻检索能力 */}
+          <div className="bg-emerald-50/40 dark:bg-emerald-950/10 rounded-xl p-4 border border-emerald-100 dark:border-emerald-900/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs mb-1.5">
+                <Database className="w-4 h-4 text-emerald-500" />
+                {t("4. 数据新闻检索能力", "Data & News Retrieval")}
+              </div>
+              <p className="text-[10px] text-emerald-600/90 dark:text-emerald-400/80 leading-relaxed">
+                {t("考核对非结构化、封闭数据库（如 SEC Form 4、代币解锁、暗池大宗流、期货交易所库存）的秒级检索查准率（RAG）和深度解析力。", "Verify RAG accuracy and extraction depth from unstructured or private sources like SEC Form 4, token unlocks, and dark pool flow.")}
+              </p>
+            </div>
+          </div>
+
+          {/* 5. 合规风控把控度 */}
+          <div className="bg-violet-50/40 dark:bg-violet-950/10 rounded-xl p-4 border border-violet-100 dark:border-violet-900/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-violet-700 dark:text-violet-400 font-bold text-xs mb-1.5">
+                <ShieldAlert className="w-4 h-4 text-violet-500" />
+                {t("5. 合规风控把控度", "Compliance & Risk Management")}
+              </div>
+              <p className="text-[10px] text-violet-600/90 dark:text-violet-400/80 leading-relaxed">
+                {t("严格监控非法投顾行为红线（非金融Advice警示），精准核算 Wash-Sale 处罚、维持保证金爆仓等刚性个人风控边界。", "Monitor strict compliance borders, evaluate wash-sale tax implications, and dynamically calculate margin call liquidation levels.")}
+              </p>
+            </div>
+          </div>
+
+          {/* 6. 多模态协同能力 */}
+          <div className="bg-sky-50/40 dark:bg-sky-950/10 rounded-xl p-4 border border-sky-100 dark:border-sky-900/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-sky-700 dark:text-sky-400 font-bold text-xs mb-1.5">
+                <Layers className="w-4 h-4 text-sky-500" />
+                {t("6. 多模态协同能力", "Multi-modal Synergy")}
+              </div>
+              <p className="text-[10px] text-sky-600/90 dark:text-sky-400/80 leading-relaxed">
+                {t("评估在输出结果时，是否能将文字逻辑阐述、关系型数据表、高交互损益图表等多维度表现方式，实现同框式的无缝协同展现。", "Assess the integration of textual narratives, relationship tables, and interactive payoff charts concurrently in a single layout.")}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 下方总结栏 */}
+        <div className="text-center pt-4 border-t border-border text-[11px] text-muted-foreground leading-relaxed">
+          {t("通过这 6 大量化评估维度对 58 个典型 Cases 进行全方位评判比较，不仅深度考验了 Agent 的硬核极限，更精准折射出团队对真实交易场景及专业金融体系的深度理解力。", "Using these 6 quantitative dimensions to comprehensively benchmark the 58 cases, this framework not only stresses the models to their limits but also reflects our deep understanding of the retail ecosystem and rigorous finance.")}
+        </div>
+      </div>
+      {/* ----------------- 新插入的六维评判总纲模块 结束 ----------------- */}
+    
     <div className="space-y-8 pb-12">
       {/* Page Header */}
       <div className="mb-8">
