@@ -35,7 +35,7 @@ export default function Layout({ children }: LayoutProps) {
               </div>
               <div>
                 <h1 className="text-base font-bold text-foreground leading-tight">
-                  {t("AIME vs Gemini 金融agent能力 深度评测", "AIME vs Gemini Financial Agent Deep Evaluation")}
+                  {t("AIME vs Gemini 金融Agent能力 深度评测", "AIME vs Gemini Financial Agent Deep Evaluation")}
                 </h1>
                 <p className="text-xs text-muted-foreground">
                   AIME vs Gemini 3.5 Flash · by Marco {t("刘凌鹏", "Liu Lingpeng")}
@@ -107,16 +107,28 @@ export default function Layout({ children }: LayoutProps) {
       <main className="max-w-[1400px] mx-auto px-6 py-8">
         {children}
       </main>
-
-      {/* Footer with Creator */}
-      <footer className="border-t border-border py-4">
-        <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">
+      {/* Footer with Creator & IP Declaration */}
+      <footer className="border-t border-border py-6 bg-slate-50/50 dark:bg-slate-950/10">
+        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 items-center gap-4 text-center">
+          
+          {/* 左侧：创作者 */}
+          <p className="text-xs text-muted-foreground md:text-left">
             {t("创作者：Marco 刘凌鹏", "Created by: Marco Liu Lingpeng")}
           </p>
-          <p className="text-xs text-muted-foreground">
-            {t("AIME 产品评测 · 2026", "AIME Product Evaluation · 2026")}
+          
+          {/* 正中间：精简版知识产权与版权声明 */}
+          <p className="text-[10px] text-muted-foreground/80 max-w-xl mx-auto leading-relaxed md:text-center">
+            {t(
+              "© 2026 Marco 刘凌鹏。本项目所有评测成果、设计逻辑及代码版权归创作者所有。仅限个人求职/面试交流，未经授权禁止复制、展示与挪用。",
+              "© 2026 Marco Liu Lingpeng. All rights reserved. This project is strictly for personal job hunting & interview prep. Unauthorized copying, exhibition, or misappropriation is prohibited."
+            )}
           </p>
+          
+          {/* 右侧：项目名称与年份 */}
+          <p className="text-xs text-muted-foreground md:text-right">
+            {t("AIME 产品评测 · 2026.05.24", "AIME Product Evaluation · 2026")}
+          </p>
+          
         </div>
       </footer>
     </div>
