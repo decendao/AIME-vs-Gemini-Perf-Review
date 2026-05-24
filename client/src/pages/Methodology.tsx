@@ -116,12 +116,12 @@ export default function Methodology() {
             </div>
           </div>
 
-          {/* Pillar 3: Market Understanding */}
+        {/* Pillar 3: Market Understanding (已替换为安全的 BarChart3 图标) */}
           <div className="bg-card rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                  <TrendingUp className="w-5 h-5" />
+                  <BarChart3 className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-foreground">
