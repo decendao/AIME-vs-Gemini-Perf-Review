@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   { path: "/methodology", labelZh: "设计思路", labelEn: "Methodology", icon: Compass },
   { path: "/details", labelZh: "问题列表", labelEn: "Questions", icon: List },
   { path: "/comparison", labelZh: "对比结果明细", labelEn: "Comparison Details", icon: FileText },
-  { path: "/conclusion", labelZh: "评测结论", labelEn: "Review Conclusion", icon: Filecheck },
+  { path: "/conclusion", labelZh: "评测结论", labelEn: "Review Conclusion", icon: FileCheck },
 ];
 
 export default function Layout({ children }: LayoutProps) {
