@@ -629,7 +629,7 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "既能用用户听得进去、甚至接地气（Reddit 梗）的柔性语言承接情绪，又能坚定阻断复仇交易和过度加杠杆，并将沟通落脚到可执行的头寸缩减、原始投资逻辑证伪与仓位风险预算上。",
+                    "喜欢做交易的朋友都知道，真正亏大钱，并不是因为不知道某家公司 PE、营收增速、资金流，而是在情绪最脆弱的时候做了错误动作：亏损后加倍补仓、重仓短期期权、爆仓边缘继续加杠杆、被社群情绪裹挟追高、把一次失败交易变成一场心理战。所以 Aime 不应该只是一个“更会分析股票的 AI”，还应该成为一个能在关键时刻拉住用户的 交易风险陪伴系统。真正有效的交易陪伴系统，不应该只靠固定话术说教，而应该能做到因人而异，根据识别用户的行为，情绪，风险偏好以及文化背景 做到个性化陪伴。 ",
                     "De-escalate high-emotion trading using retail lingo, firmly block revenge trades, and route decisions back to risk budgets, stop-loss ratios, and liquidation checks."
                   )}
                 </p>
