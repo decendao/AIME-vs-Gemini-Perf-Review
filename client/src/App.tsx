@@ -11,6 +11,7 @@ import Overview from "./pages/Overview";
 import Details from "./pages/Details";
 import Methodology from "./pages/Methodology";
 import Comparison from "./pages/Comparison";
+import Conclusion from "./pages/Conclusion";
 
 function Router() {
   return (
