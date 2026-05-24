@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BarChart3, User, Compass, List, FileText, FileCheck } from "lucide-react";
+// 检查报错页面文件的顶部，加上这一行：
+import { Globe } from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
