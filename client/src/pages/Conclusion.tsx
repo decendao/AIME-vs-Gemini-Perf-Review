@@ -565,7 +565,7 @@ export default function Conclusion() {
                 {isOpt2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
               </div>
               <h3 className="text-xs font-bold text-foreground">
-                {t("思路2：引入“渐进式思维链展示”与异步渲染机制", "Progressive CoT Display & Async Rendering")}
+                {t("思路2：CoT呈现优化，渲染为排版整洁、类似人类思考的结构化步骤", "Progressive CoT Display & Async Rendering")}
               </h3>
 
               {!isOpt2Open && (
