@@ -1,9 +1,1 @@
-{
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist/public",
-  "installCommand": "pnpm install",
-  "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
+e|"buildCommand":"pnpm build","outputDirectory":"dist/public","installCommand":"pnpm install","rewrites":[{"src":"/(.*)","destination":"/index.html"}]}
