@@ -274,7 +274,7 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
           </h2>
           <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
             {t(
-              "本仪表盘基于 58 个精心设计的双语评测案例，从六个核心维度深入剖析垂直金融大模型与通用大模型的技术与场景边界，力求多维度还原投资者在真实投研中的极致痛点。", 
+              "基于我查阅资料和过去3年作为重度Ai交互用户经验出发，我将从以下6个角度来比较AIME和Gemini的回答表现，从而来判定胜负。", 
               "This dashboard benchmarks 58 bilingual cases across 6 core dimensions, mapping the boundaries of vertical financial agents and generalist models under realistic trading scenarios."
             )}
           </p>
