@@ -505,7 +505,7 @@ export default function Conclusion() {
         <div className="border-b border-border pb-2">
           <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
             <Activity className="w-4 h-4 text-indigo-500" />
-            {t("💡 潜在优化方向：从“偏科的”向 更全能，情商更高的 “六边形”金融Agent", "💡 Strategic Roadmap: Evolving from Tool to Advisor")}
+            {t("💡 潜在优化方向：从“偏科的” 向更全能、情商更高的 “六边形” 金融Agent", "💡 Strategic Roadmap: Evolving from Tool to Advisor")}
           </h2>
         </div>
 
@@ -539,7 +539,7 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "AIME 现在不缺“数据层”，真正缺的是一套位于数据 API 与最终回答之间的“投研推理框架层”。这层的作用不是让回答看起来更像咨询报告，而是把真实数据转化为：可解释的商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。AIME 的下一阶段能力建设，不应是单纯增加更多数据源，而是建立一套[投研推理框架层]。",
+                    "AIME现在“数据调用层”非常强，但似乎缺一套位于数据 与 最终回答之间的“投研推理框架层”。这层的作用是让回答看起来不像生硬的咨询报告，而是像经常上cnbc的顶尖分析师一样，能把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标 以及在1分钟内阐明核心观点，讲重点的能力。",
                     "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
                   )}
                 </p>
