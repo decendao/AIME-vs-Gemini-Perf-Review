@@ -144,8 +144,8 @@ export default function Methodology() {
 
         </div>
       </div>
-
-      {/* 4 Motivation Mapping */}
+      
+ {/* 4 Motivation Mapping */}
       <div className="mt-8">
         <p className="text-xs text-muted-foreground mb-4">
           {t(
@@ -221,14 +221,17 @@ export default function Methodology() {
           />
         </div>
       </div>
-
+     
       {/* ================================================================ */}
       {/* Section 3: 双向解构坐标系 */}
       {/* ================================================================ */}
+
+      
+--
       <div>
         <SectionHeader
           number="2"
-          title={t("双向解构：亲和理解力 (EQ) vs. 硬核金融数理模型 (IQ)", "Dual Deconstruction: User Empathy (EQ) vs. Quantitative Rigor (IQ)")}
+          title={t("4大底层需求维度", "Dual Deconstruction: User Empathy (EQ) vs. Quantitative Rigor (IQ)")}
           color="violet"
         />
 
