@@ -42,7 +42,7 @@ export default function Conclusion() {
         </h1>
         <p className="text-xs text-muted-foreground leading-relaxed">
           {t(
-            "在 SEC 申报穿透、链上解锁监控、多因子选股及高频期权/税务计算等硬核场景中构建了绝对的数据查准率，而 Gemini 3.5 Flash 凭借巨量参数的逻辑推演优势，在非结构化产业链博弈拆解以及行为金融学（Behavioral Finance）心理焦虑干预上展现出更强的人文共情力与语言张力。个人认为垂类金融Agent未来的关键在于将**[高精度的金融工具模块]无缝对接[高情商的通用模型认知接口]**",
+            "Aime 在 SEC 申报穿透、链上解锁监控、多因子选股及高频期权/税务计算等硬核场景中构建了绝对的数据查准率，而 Gemini 3.5 Flash 凭借巨量参数的逻辑推演优势，在非结构化产业链博弈拆解以及行为金融学（Behavioral Finance）心理焦虑干预上展现出更强的人文共情力与语言张力。个人认为垂类金融Agent未来的关键在于将**[高精度的金融工具模块]无缝对接[高情商的通用模型认知接口]**",
             "Based on 58 real evaluation cases covering multi-dimensional investment motivations and scenarios, this report deeply analyzes the core barriers and limitations for vertical financial AI Agent (AIME) and general LLM (Gemini 3.5 Flash) under complex trading conditions."
           )}
         </p>
