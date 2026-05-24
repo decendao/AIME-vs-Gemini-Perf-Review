@@ -31,7 +31,7 @@ const USER_TRAITS: TraitCard[] = [
   },
   {
     icon: <Users className="w-5 h-5" />,
-    title: "社群驱动与散户抱团文化",
+    title: "社群驱动与抱团文化",
     titleEn: "Community-Driven & Meme Culture",
     description: "信息获取严重依赖去中心化社交网络（Reddit r/wallstreetbets、Twitter/X、Discord、YouTube、TikTok）。比起传统财务顾问，更信任同辈社区共识与动能，容易产生 Meme 股/币的暴涨暴跌效应。",
     descriptionEn: "Information heavily sourced from decentralized social networks (Reddit WSB, Twitter/X, Stocktwits, Discord, YouTube, TikTok FinTok). Trusts peer consensus over traditional advisors, prone to Meme stock/coin volatility.",
@@ -89,9 +89,9 @@ interface NeedCard {
 const USER_NEEDS: NeedCard[] = [
   {
     icon: <GraduationCap className="w-5 h-5" />,
-    title: "极简化金融衍生品学习与实操",
+    title: "极简化衍生品教学与模拟盈亏",
     titleEn: "ELI5 Options & Derivatives",
-    description: "需要 AI Agent 用不带金融黑话的语言解释期权希腊字母（Greeks）、备阅期权（Covered Call）、垂直价差（Spreads）等策略，并给出直观的盈亏平衡点和最大损失计算。",
+    description: "需要 AI Agent 用通俗易懂的语言解释期权希腊字母（Greeks）、备阅期权（Covered Call）、垂直价差（Spreads）等复杂概念和期权策略，并给出直观的盈亏平衡点和最大损失计算。",
     descriptionEn: "Needs AI to explain Greeks, Covered Calls, Spreads in plain language with intuitive breakeven points and max loss calculations.",
     examples: ["解释 Covered Call 策略", "计算 Iron Condor 盈亏", "Delta 对冲入门"],
     examplesEn: ["Explain Covered Call", "Calculate Iron Condor P&L", "Delta Hedging 101"],
@@ -118,7 +118,7 @@ const USER_NEEDS: NeedCard[] = [
     icon: <Shield className="w-5 h-5" />,
     title: "杠杆交易与清算风险主动防御",
     titleEn: "Margin & Liquidation Guard",
-    description: "使用质押借款（Margin）买入半导体或 AI 个股时，需要 AI 动态测算标的下跌 X% 时触发 Margin Call 或强制清算的具体价格和安全边界。",
+    description: "使用Margin买入半导体或 AI 个股时，需要 AI 动态测算标的下跌 X% 时触发 Margin Call 或强制清算的具体价格和安全边界。",
     descriptionEn: "When using margin to buy semiconductor/AI stocks, needs AI to dynamically calculate the exact price triggering Margin Call or forced liquidation at X% decline.",
     examples: ["Margin Call 触发价计算", "安全边际测算", "清算风险预警"],
     examplesEn: ["Margin Call trigger price", "Safety margin calculation", "Liquidation risk alert"],
@@ -127,7 +127,7 @@ const USER_NEEDS: NeedCard[] = [
     icon: <Brain className="w-5 h-5" />,
     title: "行为偏误纠正与情绪管理",
     titleEn: "Behavioral Bias & EQ Coaching",
-    description: "在黑天鹅暴跌时，需要 AI 稳定情绪，识别报复性交易（Revenge Trading）、确认偏误（Confirmation Bias）和踏空焦虑（FOMO），提供理性的清算或保护性对冲方案。",
+    description: "在极端波动时，需要 AI 稳定情绪，识别报复性交易（Revenge Trading）、确认偏误（Confirmation Bias）和踏空焦虑（FOMO），提供理性的清算或保护性对冲方案。",
     descriptionEn: "During black swan crashes, needs AI to stabilize emotions, identify Revenge Trading, Confirmation Bias, and FOMO, providing rational liquidation or protective hedging plans.",
     examples: ["FOMO 情绪检测", "报复性交易阻断", "恐慌对冲方案"],
     examplesEn: ["FOMO detection", "Revenge trading blocker", "Panic hedging plan"],
@@ -142,11 +142,11 @@ export default function Persona() {
       {/* Page Header */}
       <div>
         <h2 className="text-2xl font-bold text-foreground">
-          {t("测评用户画像", "Evaluator User Persona")}
+          {t("用户画像代入", "Evaluator User Persona")}
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
           {t(
-            "欧美散户投资者的行为特征、工具偏好和核心需求；本次评测的 58 个问题均基于上述用户画像设计，覆盖欧美散户在日常投资中的典型场景与高频需求，旨在检验 AIME 与 Gemini 3.5 Flash 在服务该类用户时的实际表现差异。",
+            "欧美散户投资者的心理观察、交易偏好和需求场景；我的 58 个问题均基于该用户画像设计，覆盖了欧美散户在日常交易中的典型场景与高频需求。",
             "Behavioral characteristics, tool preferences and core needs of retail investors in Western (North American & Western European) financial markets"
           )}
         </p>
@@ -228,7 +228,7 @@ export default function Persona() {
       <div className="bg-gradient-to-r from-slate-50 to-indigo-50 rounded-xl border border-slate-200 p-5">
         <p className="text-sm text-slate-700 leading-relaxed">
           {t(
-            "本次评测的 58 个问题均基于上述用户画像设计，覆盖欧美散户在日常投资中的典型场景与高频需求，旨在检验 AIME 与 Gemini 3.5 Flash 在服务该类用户时的实际表现差异。",
+            "在AI普及以后，散户们越来越依赖AI做出投资研究和决策，AI正在进一步消除散户和机构之间的的信息差。",
             "All 58 evaluation questions are designed based on the above persona, covering typical scenarios and high-frequency needs of Western retail investors, aiming to test the practical performance difference between AIME and Gemini 3.5 Flash in serving this user segment."
           )}
         </p>
