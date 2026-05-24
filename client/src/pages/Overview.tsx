@@ -164,7 +164,7 @@ export default function Overview() {
       <section>
         <SectionHeader
           number="1.3"
-          title={t("样本规模与问句类型分布", "Sample Size & Question Type Distribution")}
+          title={t("问题类型分布", "Sample Size & Question Type Distribution")}
           icon={<Database className="w-5 h-5" />}
         />
         <div className="bg-card rounded-xl border border-border p-6 shadow-sm mt-3">
@@ -179,7 +179,7 @@ export default function Overview() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
             <DistributionCard
               icon={<BarChart3 className="w-4 h-4 text-blue-600" />}
-              label={t("定量分析与数理计算", "Quantitative & Math")}
+              label={t("模拟情景与金融计算", "Quantitative & Math")}
               count={15}
               percentage="25.9%"
               color="blue"
