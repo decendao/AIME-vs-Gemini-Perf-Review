@@ -539,7 +539,7 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "通过意图分流，让硬核计算由 AIME Python 沙盒 100% 承接（绝对壁垒区），而将产业链逻辑与行为共情路由至大参数模型，由 RAG 与商业模版深度重组。",
+                    "AIME 现在不缺“数据层”，真正缺的是一套位于数据 API 与最终回答之间的“投研推理框架层”。这层的作用不是让回答看起来更像咨询报告，而是把真实数据转化为：可解释的商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。AIME 的下一阶段能力建设，不应是单纯增加更多数据源，而是建立一套[投研推理框架层]。",
                     "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
                   )}
                 </p>
