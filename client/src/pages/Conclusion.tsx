@@ -444,7 +444,7 @@ export default function Conclusion() {
               <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "AIME 的长板在于基于 API 数据源的硬核查准率，但在非结构化文本分析场景中，回答高度扁平化、条目化，缺乏逻辑深度。与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
+                    "AIME 的长板在于基于 API 数据源的硬核查准率，但在非结构化文本分析场景中，回答扁平化、条目化，缺乏逻辑深度。由于缺少一套 投研推理框架层，导致数据无法持续转化为用户可理解、可行动、可复盘的投资洞察。                                         与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
                     "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
                   )}
                 </p>
