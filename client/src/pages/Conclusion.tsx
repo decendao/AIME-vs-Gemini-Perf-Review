@@ -525,7 +525,7 @@ export default function Conclusion() {
                 {isOpt1Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
               </div>
               <h3 className="text-xs font-bold text-foreground">
-                {t("思路1：部署“金融多智能体混合专家路由系统”（MoE Router）", "MoE Financial Router Integration")}
+                {t("思路1：增加一个ChatMode聊天模式 确保快速输出", "ChatMode")}
               </h3>
               
               {!isOpt1Open && (
@@ -539,7 +539,7 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "AIME现在“数据调用层”非常强，但似乎缺一套位于数据 与 最终回答之间的“投研推理框架层”。这层的作用是让回答看起来不像生硬的咨询报告，而是像经常上cnbc的顶尖分析师一样，能把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标 以及在1分钟内阐明核心观点，讲重点的能力。",
+                    "不是所有问题都适合深度思考DeepThink。很多交易场景里，用户真正需要的是马上被拉住。",
                     "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
                   )}
                 </p>
