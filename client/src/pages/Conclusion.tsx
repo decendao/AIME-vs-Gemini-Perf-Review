@@ -505,7 +505,7 @@ export default function Conclusion() {
         <div className="border-b border-border pb-2">
           <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
             <Activity className="w-4 h-4 text-indigo-500" />
-            {t("💡 潜在优化方向：从“偏科的” 向更全能、情商更高的 “六边形” 金融Agent", "💡 Strategic Roadmap: Evolving from Tool to Advisor")}
+            {t("💡 潜在优化方向：Chat Mode, 增加情绪识别模块 & Meta-Prompt 构建", "💡 Strategic Roadmap: Evolving from Tool to Advisor")}
           </h2>
         </div>
 
