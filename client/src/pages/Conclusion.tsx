@@ -530,7 +530,7 @@ export default function Conclusion() {
               
               {!isOpt1Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("在网关层部署智能意图路由层，将“硬核量化场景”与“深度定性与行为场景”分流处理，兼顾数据与逻辑。", "Deploy an intent-based router to split quantitative sandboxes and qualitative reasoning chains.")}
+                  {t("通过Chatmode 给用户 '即时享受' 而不是 '延迟满足'。", "Deploy an intent-based router to split quantitative sandboxes and qualitative reasoning chains.")}
                 </p>
               )}
             </div>
