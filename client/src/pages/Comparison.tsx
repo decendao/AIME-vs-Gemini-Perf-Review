@@ -270,7 +270,7 @@ Investing in $AI_DOG or other Memecoins carries extremely high risk.
         <div className="mb-6">
           <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
             <Layers className="w-5 h-5 text-indigo-500" />
-            {t("六维量化评判比较体系", "6-Dimensional Evaluation & Comparison Framework")}
+            {t("6维评判体系", "6-Dimensional Evaluation & Comparison Framework")}
           </h2>
           <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
             {t(
