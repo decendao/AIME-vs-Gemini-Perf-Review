@@ -544,8 +544,8 @@ export default function Conclusion() {
                   )}
                 </p>
                 <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-2 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-[10px] leading-relaxed">
-                  <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-0.5">🌟 {t("投研推理链深度拓展", "Complete Research Chain")}</span>
-                  {t("让 AI 摆脱简单的“数据陈列”，深度切入：“数据 ➔ 假设 ➔ 机制 ➔ 反证 ➔ 情景 ➔ 投资动作”的完整投研链路，实现从回答第1/2层到攻克第3层的代际跨越。", "Enable the AI to build structured frameworks: Data ➔ Hypothesis ➔ Mechanism ➔ Disproof ➔ Scenarios ➔ Investment Actions.")}
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-0.5">🌟 {t("ChatMode的推挤结构", "Complete Research Chain")}</span>
+                  {t("1. 结论 2. 为什么 3. 风险边界4. 现在怎么做 5. 我需要你补充的一个关键信息。", "Enable the AI to build structured frameworks: Data ➔ Hypothesis ➔ Mechanism ➔ Disproof ➔ Scenarios ➔ Investment Actions.")}
                 </div>
               </div>
             )}
