@@ -565,12 +565,12 @@ export default function Conclusion() {
                 {isOpt2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
               </div>
               <h3 className="text-xs font-bold text-foreground">
-                {t("思路2：CoT呈现优化，渲染为排版整洁、类似人类思考的结构化步骤", "Progressive CoT Display & Async Rendering")}
+                {t("思路2：Deepthink（接近当前默认的）模式下 CoT呈现人类化并通过及时互动更好的确认用户需求", "Progressive CoT Display & Async Rendering")}
               </h3>
 
               {!isOpt2Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("设置“开发日志 / 极客模式”开关，默认在前端自动包装为散户看得懂的结构化步骤，渲染为排版整洁、具备高阅读性的卡片文本", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
+                  {t("在 DeepThink 模式下，用户确实需要更长等待；如果界面只是转圈，用户会产生强烈的失控感。相比于直接展示CoT（当前），我觉得更好的做法是展示类人化、结构化、可审计的推理进度：我正在查什么、为什么查、已经确认什么、还差什么、接下来会如何形成结论。", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
                 </p>
               )}
             </div>
@@ -584,7 +584,7 @@ export default function Conclusion() {
                   )}
                 </p>
                 
-                {/* 引入“投研化”步骤组件 */}
+                {/* 引入数据调用选择，增加用户控制感 */}
                 <div className="p-2 rounded-lg bg-indigo-50/30 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-950/30 space-y-1 font-mono text-[9px]">
                   <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                     <Check className="w-3 h-3 shrink-0" /> {t("[✓] 正在实时穿透最新 SEC Form 4 披露文件...", "[✓] Querying SEC Form 4 database...")}
