@@ -579,7 +579,7 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "交互界面的“极客外溢”：CoT 的呈现缺乏一层面向用户的“翻译包装”。直接将 raw JSON、bash 管道符命令和未转义的 stdout 扔给散户，有损体验。",
+                    "在 DeepThink 模式下，AIME 需要调用更复杂的数据检索、事实校验、投研推理和风险评估链路，用户等待时间天然更长。因此，不能让用户面对静态加载状态，而向用户展示可理解、可审计、可交互的推理轨迹：AIME 正在验证哪些事实、选择哪些分析框架、还需要哪些数据、当前形成了哪些初步判断、接下来将如何转化为投资动作。同时，DeepThink 应引入轻量游戏化交互，例如 ✅ / ❌ 选择是否调取财务细项、期权链、同行估值、新闻催化、持仓成本、保证金数据等。用户在等待过程中持续参与决策路径，而不是被动等待结果，从而降低焦虑感，提高信任感和最终建议的接受度。",
                     "The issue isn't the latency itself, but the lack of visibility. Exposing the reasoning chain transforms waiting times into active trust."
                   )}
                 </p>
