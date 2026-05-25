@@ -539,7 +539,7 @@ export default function Conclusion() {
               <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "不是所有问题都适合深度思考DeepThink。很多交易场景里，用户真正需要的是马上被拉住。",
+                    "不是所有问题都适合深度思考DeepThink。很多交易场景里，用户真正需要的是马上被拉住。用户选择聊天模式下，可以稳定的在30s内获得相当于来自一个拥有CFA+顶级金融市场理解的'大佬'的回答，虽然回答可能不是特别长和大信息量，但依然对用户来说是很有价值的。对比之下，DeepThink（接近目前默认模式） 不应该是“更长的聊天”，而应该是一个真正的深度分析工作流。",
                     "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
                   )}
                 </p>
