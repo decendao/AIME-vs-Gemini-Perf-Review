@@ -430,7 +430,7 @@ export default function Conclusion() {
                 {isIssue2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
               </div>
               <h3 className="text-xs font-bold text-foreground">
-                {t("缺少一套可复用的“投研推理框架层”", "Absence of Reusable Reasoning Framework")}
+                {t("缺少[从数据到决策]的中间推理层”", "Absence of Reusable Reasoning Framework")}
               </h3>
 
               {!isIssue2Open && (
