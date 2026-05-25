@@ -13,10 +13,11 @@ import {
 export default function Conclusion() {
   const { t } = useLanguage();
 
-  // 🌟 新增：潜在优化思路的折叠控制状态
+  // 潜在优化思路的折叠控制状态
   const [isOpt1Open, setIsOpt1Open] = useState(false);
   const [isOpt2Open, setIsOpt2Open] = useState(false);
   const [isOpt3Open, setIsOpt3Open] = useState(false);
+  
   // 深度诊断卡片折叠状态
   const [isQuantOpen, setIsQuantOpen] = useState(false);
   const [isQualOpen, setIsQualOpen] = useState(false);
@@ -29,18 +30,20 @@ export default function Conclusion() {
   const [isIssue3Open, setIsIssue3Open] = useState(false);
 
   return (
-    <div className="space-y-8 animate-fade-in-up max-w-5xl mx-auto pb-12">
+    <div className="space-y-10 animate-fade-in-up max-w-5xl mx-auto pb-12">
       
-      {/* Page Header */}
-      <div className="space-y-2">
+      {/* ================================================================ */}
+      {/* Page Header (大字号、高可读性设计) */}
+      {/* ================================================================ */}
+      <div className="space-y-3">
         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
-          <Sparkles className="w-4 h-4" />
-          <span className="text-[10px] font-bold uppercase tracking-wider font-mono">Evaluation Report</span>
+          <Sparkles className="w-5 h-5" />
+          <span className="text-[11px] font-bold uppercase tracking-wider font-mono">Evaluation Report</span>
         </div>
-        <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+        <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
           {t("最终评测结论", "Final Evaluation Conclusion")}
         </h1>
-        <p className="text-xs text-muted-foreground leading-relaxed">
+        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-4xl">
           {t(
             "Aime 在 SEC 申报穿透、链上解锁监控、多因子选股及高频期权/税务计算等硬核场景中构建了绝对的数据查准率，而 Gemini 3.5 Flash 凭借巨量参数的逻辑推演优势，在非结构化产业链博弈拆解以及行为金融学（Behavioral Finance）心理焦虑干预上展现出更强的人文共情力与语言张力。个人认为垂类金融Agent未来的关键在于将**[高精度的金融工具模块]无缝对接[高情商的通用模型认知接口]**",
             "Based on 58 real evaluation cases covering multi-dimensional investment motivations and scenarios, this report deeply analyzes the core barriers and limitations for vertical financial AI Agent (AIME) and general LLM (Gemini 3.5 Flash) under complex trading conditions."
@@ -49,7 +52,291 @@ export default function Conclusion() {
       </div>
 
       {/* ================================================================ */}
-      {/* 1. 总胜负对比 & 4大维度胜负分布 */}
+      {/* 【核心前置】3. AIME 核心产品与系统问题定义 (高显眼度排版) */}
+      {/* ================================================================ */}
+      <section className="space-y-4">
+        <div className="border-b border-border pb-2">
+          <h2 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-rose-500" />
+            {t("一、核心产品与系统问题定义 (点击卡片查看痛点详情)", "I. Core Product & System Problem Definitions (Click to view details)")}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          
+          {/* Issue 1 */}
+          <div 
+            onClick={() => setIsIssue1Open(!isIssue1Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-3 ${isIssue1Open ? "border-rose-400 bg-rose-50/5 dark:bg-rose-950/10" : "border-border hover:border-rose-300 dark:hover:border-rose-900"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4.5 h-4.5" />
+                  <h4 className="text-[10px] font-bold uppercase tracking-wider font-mono">{t("延迟与可见性", "Latency & Visibility")}</h4>
+                </div>
+                {isIssue1Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                {t("复杂研究链路的高延迟 & 过于极客/调试Log式的CoT", "High Latency & Raw Code-like CoT Logs")}
+              </h3>
+              
+              {!isIssue1Open && (
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                  {t("面对复杂问题时thinking时间过长，在问题34（期权检索）尤其显著，最终居然花了13分钟输出最终回答。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
+                </p>
+              )}
+            </div>
+
+            {isIssue1Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  {t(
+                    "面临复杂场景时，系统会触发长链条执行流（意图解析 -> 任务拆解 -> 调库检索 -> 本地运行代码 -> 建模/筛选 -> 校验）。这导致平均输出CoT展示时长高达 60s - 120s。Aime 处理此类问题时更接近一个研究工作流系统，而非简单的一问一答。AIME 在界面中直接将 Agent 底层最原始的 JSON 运行指令、运行超时参数（timeout_ms: 30000）、物理沙盒路径（/tmp/...）以及带有换行非转义字符（\\n\\n）的原始终端输出（stdout） 毫无保留地展示给了用户。",
+                    "Complex tasks trigger a long ReAct sequence (Intent parsed -> tool allocation -> SQL index -> local execution sandbox -> valuation -> advisory output), spiking latency to 40-60 seconds. This is a heavy workflow rather than simple Q&A."
+                  )}
+                </p>
+                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-3 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
+                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-1 text-xs">💡 {t("用户痛点", "User Painpoint")}</span>
+                  {t("对于大多数欧美普通的散户而言，这种直接裸露的 系统控制台/调试日志 过于极客。普通用户看到代码、cmd 以及换行符，容易产生 [系统是不是出 Bug 了]或[是不是报错了]的焦虑和失望，不仅无法建立信任，反而增加了认知负荷（Cognitive Load）。", "The UI shows only a generic loading spinner without intermediate state transitions, causing rapid drop-offs under real-time market pressure.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Issue 2 */}
+          <div 
+            onClick={() => setIsIssue2Open(!isIssue2Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-3 ${isIssue2Open ? "border-rose-400 bg-rose-50/5 dark:bg-rose-950/10" : "border-border hover:border-rose-300 dark:hover:border-rose-900"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center gap-1.5">
+                  <Brain className="w-4.5 h-4.5" />
+                  <h4 className="text-[10px] font-bold uppercase tracking-wider font-mono">{t("投研推理框架", "Reasoning Moat")}</h4>
+                </div>
+                {isIssue2Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                {t("缺少[从数据到决策]的中间推理层", "Absence of Data-to-Decision Reasoning Framework")}
+              </h3>
+
+              {!isIssue2Open && (
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                  {t("AIME 具有极佳的硬核数据查准率，但在无结构定性分析场景中呈现‘数据真实但洞察浅’。", "AIME excels in accuracy but defaults to flat descriptions in qualitative deduction scenarios.")}
+                </p>
+              )}
+            </div>
+
+            {isIssue2Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  {t(
+                    "AIME 的长板在于基于 API 数据源的硬核查准率，“数据调用层”非常强，但缺一套位于数据与最终回答之间的“投研推理框架层”。这层的作用是让数据持续转化为用户可理解、可行动、可复盘的投资洞察。同时语气上也要确保让回答看起来不像生硬的咨询报告，而是像经常上 CNBC 的顶尖分析师一样，能生动的把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
+                    "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
+                  )}
+                </p>
+                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-3 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
+                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-1 text-xs">💡 {t("用户痛点", "User Painpoint")}</span>
+                  {t("单纯的财务指标并不能直接形成投资决策。用户需要系统深度剖析商业模式演变、估值分化源头、共识偏误以及可行动的仓位策略，得到一个“数据 ➔ 假设 ➔ 机制 ➔ 反证 ➔ 情景 ➔ 投资动作”的完整投研链路", "Raw multiples are not immediately actionable. Retailers seek comprehensive frameworks detailing structural moats, consensus consensus divergences, and trading actions.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Issue 3 */}
+          <div 
+            onClick={() => setIsIssue3Open(!isIssue3Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-3 ${isIssue3Open ? "border-rose-400 bg-rose-50/5 dark:bg-rose-950/10" : "border-border hover:border-rose-300 dark:hover:border-rose-900"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center gap-1.5">
+                  <ShieldAlert className="w-4.5 h-4.5" />
+                  <h4 className="text-[10px] font-bold uppercase tracking-wider font-mono">{t("沟通与 EQ 缺失", "EQ & Communication")}</h4>
+                </div>
+                {isIssue3Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                {t("高情绪场景下说教式的合规提示导致沟通摩擦", "Regulatory Over-compliance in Panic Situations")}
+              </h3>
+
+              {!isIssue3Open && (
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                  {t("面对保证金追加、爆仓、踏空 FOMO 等极端情绪场景，AI 语调高冷说教，缺乏同理心。", "Failing to read localized retail trading sentiment (e.g., r/wallstreetbets) adds friction during crisis moments.")}
+                </p>
+              )}
+            </div>
+
+            {isIssue3Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  {t(
+                    "AIME 缺少一套‘情绪识别 -> 行为金融纠偏 -> 本土化沟通 -> 风险动作落地’的干预层。面临爆仓或 FOMO 焦虑时，AIME 现有话术过于刻板说教，常以公式化警告应对，虽然方向绝对正确，但缺失了情绪承接与可执行的下一步柔性风控方案。",
+                    "AIME lacks a holistic behavioral intervention chain. When traders face margin calls or FOMO, AIME defaults to formulaic compliance warnings, missing empathetic de-escalation or actionable, low-friction wind-down pathways."
+                  )}
+                </p>
+                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-3 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
+                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-1 text-xs">💡 {t("用户痛点", "User Painpoint")}</span>
+                  {t("AI 缺乏对 HODL, Diamond Hands, Ape-in 等欧美散户常用本土黑话和流行的感知，在最需要配合降风控的危机时刻难以与用户建立深层信任。", "AIME fails to read retail lingo (HODL, Diamond Hands), adding systemic communication friction where compliance must meet active trust.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* 【核心前置】4. 🌟 潜在优化方向：代际演进与突破 (高显眼度排版) */}
+      {/* ================================================================ */}
+      <section className="space-y-4">
+        <div className="border-b border-border pb-2">
+          <h2 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
+            <Activity className="w-5 h-5 text-indigo-500" />
+            {t("二、潜在优化方向：Chat Mode, CoT交互化，情绪识别模块 & Meta-Prompt构建", "II. Strategic Roadmap: Chat Mode & EQ Meta-Prompts")}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          {/* Strategy 1 */}
+          <div 
+            onClick={() => setIsOpt1Open(!isOpt1Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-3 ${isOpt1Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                <div className="flex items-center gap-1.5">
+                  <Layers className="w-4.5 h-4.5" />
+                  <h4 className="text-[10px] font-bold uppercase tracking-wider font-mono">{t("架构演进", "Architecture")}</h4>
+                </div>
+                {isOpt1Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                {t("思路1：增加 ChatMode 聊天模式 确保快速输出", "Option 1: Add a Quick ChatMode")}
+              </h3>
+              
+              {!isOpt1Open && (
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                  {t("通过 ChatMode 给用户 '即时享受' 而不是 '延迟满足'。", "Deploy an intent-based router to split quantitative sandboxes and qualitative reasoning chains.")}
+                </p>
+              )}
+            </div>
+
+            {isOpt1Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  {t(
+                    "不是所有问题都适合深度思考 DeepThink。很多交易场景里，用户真正需要的是马上被拉住。用户选择聊天模式下，可以稳定的在 30s 内获得相当于来自一个拥有 CFA+ 顶级金融市场理解的'大佬'的回答，虽然回答可能不是特别长和大信息量，但依然对用户来说是很有价值的。对比之下，DeepThink（接近目前默认模式） 不应该是“更长的聊天”，而应该是一个真正的深度分析工作流。",
+                    "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
+                  )}
+                </p>
+                <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-3 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-xs leading-relaxed">
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">🌟 {t("ChatMode 的推挤结构", "Complete Research Chain")}</span>
+                  {t("1. 结论 2. 为什么 3. 风险边界 4. 现在怎么做 5. 我需要你补充的一个关键信息。", "Enable the AI to build structured frameworks: Data ➔ Hypothesis ➔ Mechanism ➔ Disproof ➔ Scenarios ➔ Investment Actions.")}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Strategy 2 */}
+          <div 
+            onClick={() => setIsOpt2Open(!isOpt2Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-3 ${isOpt2Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4.5 h-4.5" />
+                  <h4 className="text-[10px] font-bold uppercase tracking-wider font-mono">{t("感知交互", "Interaction UX")}</h4>
+                </div>
+                {isOpt2Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                {t("思路2：DeepThink 模式下 CoT 呈现人类化并进行即时互动", "Option 2: Humanized CoT & Real-time Interaction")}
+              </h3>
+
+              {!isOpt2Open && (
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                  {t("在 DeepThink 模式下，用户确实需要更长等待；如果界面只是转圈，用户会产生强烈的失控感。相比于直接展示CoT（当前），我觉得更好的做法是展示类人化、结构化、可审计的推理进度。", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
+                </p>
+              )}
+            </div>
+
+            {isOpt2Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  {t(
+                    "在 DeepThink 模式下，AIME 需要调用更复杂的数据检索、事实校验、投研推理和风险评估链路，用户等待时间天然更长。因此，不能让用户面对静态加载状态，而向用户展示可理解、可审计、可交互的推理轨迹：AIME 正在验证哪些事实、选择哪些分析框架、还需要哪些数据、当前形成了哪些初步判断、接下来将如何转化为投资动作。同时，DeepThink 应引入轻量游戏化交互，例如 ✅ / ❌ 选择是否调取财务细项、期权链、同行估值、新闻催化、持仓成本、保证金数据等。用户在等待过程中持续参与决策路径，而不是被动等待结果，从而降低焦虑感，提高信任感和最终建议的接受度。",
+                    "The issue isn't the latency itself, but the lack of visibility. Exposing the reasoning chain transforms waiting times into active trust."
+                  )}
+                </p>
+                
+                {/* 引入数据调用选择，增加用户控制感 */}
+                <div className="p-3 rounded-lg bg-indigo-50/30 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-950/30 space-y-1 font-mono text-[10px] leading-relaxed">
+                  <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5 shrink-0" /> {t("[✓] 正在实时穿透最新 SEC Form 4 披露文件...", "[✓] Querying SEC Form 4 database...")}
+                  </div>
+                  <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5 shrink-0" /> {t("[✓] 正在调取 Python 财务计算引擎核对持股盈亏...", "[✓] Computing executive balances via Python engine...")}
+                  </div>
+                  <div className="text-indigo-600 dark:text-indigo-400 flex items-center gap-1 animate-pulse">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping inline-block shrink-0"></span>
+                    {t("[ ] 正在将多维数据渲染为可交互的财务损益卡片...", "[ ] Rendering interactive financial cards...")}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Strategy 3 */}
+          <div 
+            onClick={() => setIsOpt3Open(!isOpt3Open)}
+            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-3 ${isOpt3Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                <div className="flex items-center gap-1.5">
+                  <ShieldAlert className="w-4.5 h-4.5" />
+                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("行为陪伴", "EQ Companion")}</h4>
+                </div>
+                {isOpt3Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                {t("思路3：不只是脑子好的分析师，还是提供高情绪价值的交易伴侣", "Option 3: EQ Emotional Wealth Companion")}
+              </h3>
+
+              {!isOpt3Open && (
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                  {t("引入“情绪承接 ➔ 本土化解偏 ➔ 风控动作”思维，先共情用户、再拆解偏误，以柔性的表达配合极其坚定的风控硬边界阻断错误交易。", "De-escalate panic trading with strong retail sentiment understanding and rigid risk rules.")}
+                </p>
+              )}
+            </div>
+
+            {isOpt3Open && (
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  {t(
+                    "喜欢做交易的朋友都知道，真正亏大钱，并不是因为不知道某家公司 PE、营收增速、资金流，而是在情绪最脆弱的时候做了错误动作：亏损后加倍补仓、重仓短期期权、爆仓边缘继续加杠杆、被社群情绪裹挟追高、把一次失败交易变成一场心理战。所以 Aime 不应该只是一个“更会分析股票的 AI”，还应该成为一个能在关键时刻拉住用户的 交易风险陪伴系统。真正有效的交易陪伴系统，不应该只靠固定话术说教，而应该能做到因人而异，根据识别用户的行为，情绪，风险偏好以及文化背景 做到个性化陪伴。 ",
+                    "De-escalate high-emotion trading using retail lingo, firmly block revenge trades, and route decisions back to risk budgets, stop-loss ratios, and liquidation checks."
+                  )}
+                </p>
+                <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-3 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-xs italic">
+                  {t(
+                    "“我理解你现在想补仓，因为亏损会让人想夺回控制感。但现在补仓不是策略，是复仇交易。我们先暂停，核对三个指标：保证金安全、仓位承受上限、以及初始逻辑是否被证伪。”",
+                    "\"I know you want to average down because losing feels like losing control. But right now, that is a revenge trade, not a strategy. Let's pause and check: margin safety, leverage ceiling, and thesis invalidation.\""
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* 【中位支撑】1. 总胜负对比 & 4大维度胜负分布 */}
       {/* ================================================================ */}
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         
@@ -158,7 +445,7 @@ export default function Conclusion() {
       </section>
 
       {/* ================================================================ */}
-      {/* 2. 各维度评测结论深度诊断（支持折叠展开） */}
+      {/* 【下位支撑】2. 各维度评测结论深度诊断（支持折叠展开） */}
       {/* ================================================================ */}
       <section className="space-y-4">
         <div className="border-b border-border pb-2">
@@ -363,300 +650,17 @@ export default function Conclusion() {
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* 3. AIME 核心产品与系统问题定义 */}
-      {/* ================================================================ */}
-      <section className="space-y-4">
-        <div className="border-b border-border pb-2">
-          <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-rose-500" />
-            {t("AIME 核心产品与系统问题定义 (点击卡片查看痛点详情)", "AIME Core Product & System Problem Definitions (Click to view details)")}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          
-          {/* Issue 1 */}
-          <div 
-            onClick={() => setIsIssue1Open(!isIssue1Open)}
-            className="bg-card rounded-xl border border-border p-5 shadow-sm cursor-pointer hover:border-rose-300 dark:hover:border-rose-900 transition-all select-none flex flex-col justify-between space-y-2"
-          >
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-rose-500">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4" />
-                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("延迟与可见性", "Latency & Visibility")}</h4>
-                </div>
-                {isIssue1Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
-              </div>
-              <h3 className="text-xs font-bold text-foreground">
-                {t("复杂研究链路的高延迟 & 过于极客/调试Log式的CoT", "High Latency in Multi‑Agent Flows")}
-              </h3>
-              
-              {!isIssue1Open && (
-                <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("面对复杂问题时thinking时间过长，在问题34（期权检索）尤其显著，最终居然花了13分钟输出最终回答。", "Complex multi-factor screening and 3-stage DCF tasks spike latency to 40-60 seconds.")}
-                </p>
-              )}
-            </div>
-
-            {isIssue1Open && (
-              <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
-                <p>
-                  {t(
-                    "面临复杂场景时，系统会触发长链条执行流（意图解析 -> 任务拆解 -> 调库检索 -> 本地运行代码 -> 建模/筛选 -> 校验）。这导致平均输出CoT展示时长高达 60s - 120s。Aime 处理此类问题时更接近一个研究工作流系统，而非简单的一问一答。AIME 在界面中直接将 Agent 底层最原始的 JSON 运行指令、运行超时参数（timeout_ms: 30000）、物理沙盒路径（/tmp/...）以及带有换行非转义字符（\n\n）的原始终端输出（stdout） 毫无保留地展示给了用户。",
-                    "Complex tasks trigger a long ReAct sequence (Intent parsed -> tool allocation -> SQL index -> local execution sandbox -> valuation -> advisory output), spiking latency to 40-60 seconds. This is a heavy workflow rather than simple Q&A."
-                  )}
-                </p>
-                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
-                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
-                  {t("对于大多数欧美普通的散户而言，这种直接裸露的 系统控制台/调试日志 过于极客。普通用户看到代码、cmd 以及换行符，容易产生 [系统是不是出 Bug 了]或[是不是报错了]的焦虑和失望，不仅无法建立信任，反而增加了认知负荷（Cognitive Load）。", "The UI shows only a generic loading spinner without intermediate state transitions, causing rapid drop-offs under real-time market pressure.")}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Issue 2 */}
-          <div 
-            onClick={() => setIsIssue2Open(!isIssue2Open)}
-            className="bg-card rounded-xl border border-border p-5 shadow-sm cursor-pointer hover:border-rose-300 dark:hover:border-rose-900 transition-all select-none flex flex-col justify-between space-y-2"
-          >
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-rose-500">
-                <div className="flex items-center gap-1.5">
-                  <Brain className="w-4 h-4" />
-                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("投研推理框架", "Reasoning Moat")}</h4>
-                </div>
-                {isIssue2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
-              </div>
-              <h3 className="text-xs font-bold text-foreground">
-                {t("缺少[从数据到决策]的中间推理层”", "Absence of Reusable Reasoning Framework")}
-              </h3>
-
-              {!isIssue2Open && (
-                <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("AIME 具有极佳的硬核数据查准率，但时常在定性分析中呈现‘数据真实但洞察浅’。", "AIME excels in accuracy but defaults to flat descriptions in qualitative deduction scenarios.")}
-                </p>
-              )}
-            </div>
-
-            {isIssue2Open && (
-              <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
-                <p>
-                  {t(
-                    "AIME 的长板在于基于 API 数据源的硬核查准率，“数据调用层”非常强，但似乎缺一套位于数据 与 最终回答之间的“投研推理框架层”。这层的作用是让数据持续转化为用户可理解、可行动、可复盘的投资洞察。同时语气上也要确保让回答看起来不像生硬的咨询报告，而是像经常上cnbc的顶尖分析师一样，能生动的把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。                                  与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
-                    "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
-                  )}
-                </p>
-                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
-                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
-                  {t("单纯的财务指标并不能直接形成投资决策。用户需要系统深度剖析商业模式演变、估值分化源头、共识偏误以及可行动的仓位策略，得到一个“数据 ➔ 假设 ➔ 机制 ➔ 反证 ➔ 情景 ➔ 投资动作”的完整投研链路", "Raw multiples are not immediately actionable. Retailers seek comprehensive frameworks detailing structural moats, consensus consensus divergences, and trading actions.")}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Issue 3 */}
-          <div 
-            onClick={() => setIsIssue3Open(!isIssue3Open)}
-            className="bg-card rounded-xl border border-border p-5 shadow-sm cursor-pointer hover:border-rose-300 dark:hover:border-rose-900 transition-all select-none flex flex-col justify-between space-y-2"
-          >
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-rose-500">
-                <div className="flex items-center gap-1.5">
-                  <ShieldAlert className="w-4 h-4" />
-                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("沟通与 EQ 缺失", "EQ & Communication")}</h4>
-                </div>
-                {isIssue3Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
-              </div>
-              <h3 className="text-xs font-bold text-foreground">
-                {t("高情绪场景下说教式的合规提示导致沟通摩擦", "Regulatory Over-compliance in Panic Situations")}
-              </h3>
-
-              {!isIssue3Open && (
-                <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("面对保证金追加、爆仓、踏空 FOMO 等极端情绪场景，AI 语调高冷说教，缺乏同理心。", "Failing to read localized retail trading sentiment (e.g., r/wallstreetbets) adds friction during crisis moments.")}
-                </p>
-              )}
-            </div>
-
-            {isIssue3Open && (
-              <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
-                <p>
-                  {t(
-                    "AIME 缺少一套‘情绪识别 -> 行为金融纠偏 -> 本土化沟通 -> 风险动作落地’的干预层。面临爆仓或 FOMO 焦虑时，AIME 现有话术过于刻板说教，常以公式化警告应对，虽然方向绝对正确，但缺失了情绪承接与可执行的下一步柔性风控方案。",
-                    "AIME lacks a holistic behavioral intervention chain. When traders face margin calls or FOMO, AIME defaults to formulaic compliance warnings, missing empathetic de-escalation or actionable, low-friction wind-down pathways."
-                  )}
-                </p>
-                <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
-                  <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
-                  {t("AI 缺乏对 HODL, Diamond Hands, Ape-in 等欧美散户常用本土黑话和流行的感知，在最需要配合降风控的危机时刻难以与用户建立深层信任。", "AIME fails to read retail lingo (HODL, Diamond Hands), adding systemic communication friction where compliance must meet active trust.")}
-                </div>
-              </div>
-            )}
-          </div>
-
-        </div>
-      </section>
-
-          {/* 4. 🌟 潜在优化方向：代际演进与突破（交互折叠设计） */}
-      {/* ================================================================ */}
-      <section className="space-y-4">
-        <div className="border-b border-border pb-2">
-          <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
-            <Activity className="w-4 h-4 text-indigo-500" />
-            {t("💡 潜在优化方向：Chat Mode, 增加情绪识别模块 & Meta-Prompt 构建", "💡 Strategic Roadmap: Evolving from Tool to Advisor")}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
-          {/* Strategy 1 */}
-          <div 
-            onClick={() => setIsOpt1Open(!isOpt1Open)}
-            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-2 ${isOpt1Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
-          >
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
-                <div className="flex items-center gap-1.5">
-                  <Layers className="w-4 h-4" />
-                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("架构演进", "Architecture")}</h4>
-                </div>
-                {isOpt1Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
-              </div>
-              <h3 className="text-xs font-bold text-foreground">
-                {t("思路1：增加一个ChatMode聊天模式 确保快速输出", "ChatMode")}
-              </h3>
-              
-              {!isOpt1Open && (
-                <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("通过Chatmode 给用户 '即时享受' 而不是 '延迟满足'。", "Deploy an intent-based router to split quantitative sandboxes and qualitative reasoning chains.")}
-                </p>
-              )}
-            </div>
-
-            {isOpt1Open && (
-              <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
-                <p>
-                  {t(
-                    "不是所有问题都适合深度思考DeepThink。很多交易场景里，用户真正需要的是马上被拉住。用户选择聊天模式下，可以稳定的在30s内获得相当于来自一个拥有CFA+顶级金融市场理解的'大佬'的回答，虽然回答可能不是特别长和大信息量，但依然对用户来说是很有价值的。对比之下，DeepThink（接近目前默认模式） 不应该是“更长的聊天”，而应该是一个真正的深度分析工作流。",
-                    "Intent classification ensures hard analytics go 100% to AIME's Python sandbox, while routing industrial logic to high-reasoning models."
-                  )}
-                </p>
-                <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-2 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-[10px] leading-relaxed">
-                  <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-0.5">🌟 {t("ChatMode的推挤结构", "Complete Research Chain")}</span>
-                  {t("1. 结论 2. 为什么 3. 风险边界4. 现在怎么做 5. 我需要你补充的一个关键信息。", "Enable the AI to build structured frameworks: Data ➔ Hypothesis ➔ Mechanism ➔ Disproof ➔ Scenarios ➔ Investment Actions.")}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Strategy 2 */}
-          <div 
-            onClick={() => setIsOpt2Open(!isOpt2Open)}
-            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-2 ${isOpt2Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
-          >
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4" />
-                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("感知交互", "Interaction UX")}</h4>
-                </div>
-                {isOpt2Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
-              </div>
-              <h3 className="text-xs font-bold text-foreground">
-                {t("思路2：Deepthink（接近当前默认的）模式下 CoT呈现人类化并通过及时互动更好的确认用户需求", "Progressive CoT Display & Async Rendering")}
-              </h3>
-
-              {!isOpt2Open && (
-                <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("在 DeepThink 模式下，用户确实需要更长等待；如果界面只是转圈，用户会产生强烈的失控感。相比于直接展示CoT（当前），我觉得更好的做法是展示类人化、结构化、可审计的推理进度：我正在查什么、为什么查、已经确认什么、还差什么、接下来会如何形成结论。", "Turn physical wait times into engaging, step-by-step cognitive feedback showing Agent milestones.")}
-                </p>
-              )}
-            </div>
-
-            {isOpt2Open && (
-              <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
-                <p>
-                  {t(
-                    "在 DeepThink 模式下，AIME 需要调用更复杂的数据检索、事实校验、投研推理和风险评估链路，用户等待时间天然更长。因此，不能让用户面对静态加载状态，而向用户展示可理解、可审计、可交互的推理轨迹：AIME 正在验证哪些事实、选择哪些分析框架、还需要哪些数据、当前形成了哪些初步判断、接下来将如何转化为投资动作。同时，DeepThink 应引入轻量游戏化交互，例如 ✅ / ❌ 选择是否调取财务细项、期权链、同行估值、新闻催化、持仓成本、保证金数据等。用户在等待过程中持续参与决策路径，而不是被动等待结果，从而降低焦虑感，提高信任感和最终建议的接受度。",
-                    "The issue isn't the latency itself, but the lack of visibility. Exposing the reasoning chain transforms waiting times into active trust."
-                  )}
-                </p>
-                
-                {/* 引入数据调用选择，增加用户控制感 */}
-                <div className="p-2 rounded-lg bg-indigo-50/30 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-950/30 space-y-1 font-mono text-[9px]">
-                  <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3 h-3 shrink-0" /> {t("[✓] 正在实时穿透最新 SEC Form 4 披露文件...", "[✓] Querying SEC Form 4 database...")}
-                  </div>
-                  <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3 h-3 shrink-0" /> {t("[✓] 正在调取 Python 财务计算引擎核对持股盈亏...", "[✓] Computing executive balances via Python engine...")}
-                  </div>
-                  <div className="text-indigo-600 dark:text-indigo-400 flex items-center gap-1 animate-pulse">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping inline-block shrink-0"></span>
-                    {t("[ ] 正在将多维数据渲染为可交互的财务损益卡片...", "[ ] Rendering interactive financial cards...")}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Strategy 3 */}
-          <div 
-            onClick={() => setIsOpt3Open(!isOpt3Open)}
-            className={`bg-card rounded-xl border p-5 shadow-sm cursor-pointer transition-all select-none flex flex-col justify-between space-y-2 ${isOpt3Open ? "border-indigo-400 bg-indigo-50/5 dark:bg-indigo-950/10" : "border-border hover:border-indigo-300 dark:hover:border-indigo-800"}`}
-          >
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-indigo-600 dark:text-indigo-400">
-                <div className="flex items-center gap-1.5">
-                  <ShieldAlert className="w-4 h-4" />
-                  <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">{t("行为陪伴", "EQ Companion")}</h4>
-                </div>
-                {isOpt3Open ? <ChevronUp className="w-3.5 h-3.5 text-muted-foreground" /> : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />}
-              </div>
-              <h3 className="text-xs font-bold text-foreground">
-                {t("思路3：不只是脑子好的分析师，还是给情绪价值的交易陪伴搭子", "Behavioral Finance Intervention Closed-Loop")}
-              </h3>
-
-              {!isOpt3Open && (
-                <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("引入“情绪承接 ➔ 本土化解偏 ➔ 风控动作”思维，先共情用户、再拆解偏误，以柔性的表达配合极其坚定的风控硬边界阻断错误交易。", "De-escalate panic trading with strong retail sentiment understanding and rigid risk rules.")}
-                </p>
-              )}
-            </div>
-
-            {isOpt3Open && (
-              <div className="space-y-2 pt-1 animate-fade-in text-[11px] text-muted-foreground">
-                <p>
-                  {t(
-                    "喜欢做交易的朋友都知道，真正亏大钱，并不是因为不知道某家公司 PE、营收增速、资金流，而是在情绪最脆弱的时候做了错误动作：亏损后加倍补仓、重仓短期期权、爆仓边缘继续加杠杆、被社群情绪裹挟追高、把一次失败交易变成一场心理战。所以 Aime 不应该只是一个“更会分析股票的 AI”，还应该成为一个能在关键时刻拉住用户的 交易风险陪伴系统。真正有效的交易陪伴系统，不应该只靠固定话术说教，而应该能做到因人而异，根据识别用户的行为，情绪，风险偏好以及文化背景 做到个性化陪伴。 ",
-                    "De-escalate high-emotion trading using retail lingo, firmly block revenge trades, and route decisions back to risk budgets, stop-loss ratios, and liquidation checks."
-                  )}
-                </p>
-                <div className="bg-indigo-50/20 dark:bg-indigo-950/10 p-2 rounded-lg border border-indigo-100/50 dark:border-indigo-950/30 text-[10px] italic">
-                  {t(
-                    "“我理解你现在想补仓，因为亏损会让人想夺回控制感。但现在补仓不是策略，是复仇交易。我们先暂停，核对三个指标：保证金安全、仓位承受上限、以及初始逻辑是否被证伪。”",
-                    "\"I know you want to average down because losing feels like losing control. But right now, that is a revenge trade, not a strategy. Let's pause and check: margin safety, leverage ceiling, and thesis invalidation.\""
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-
-        </div>
-      </section>
-
       {/* Final Wrap-up Card */}
-      <div className="bg-indigo-50 dark:bg-indigo-950/20 rounded-xl p-5 border border-indigo-100 dark:border-indigo-900/40 flex flex-col md:flex-row items-center gap-4">
+      <div className="bg-indigo-50 dark:bg-indigo-950/20 rounded-xl p-5 border border-indigo-100 dark:border-indigo-900/60 flex flex-col md:flex-row items-center gap-4">
         <Info className="w-7 h-7 text-indigo-600 dark:text-indigo-400 shrink-0" />
         <div className="space-y-1">
           <h4 className="text-xs font-bold text-foreground">
-            {t("知识产权声明", "Strategic Action Points for AIME")}
+            {t("知识产权声明", "Intellectual Property Notice")}
           </h4>
           <p className="text-[11px] text-muted-foreground leading-relaxed">
             {t(
               "本评测项目及报告（包括但不限于文字内容、设计思路、58个评测案例、指标打分维度、可视化页面及代码等）的全部知识产权与著作权均归创作者本人所有，并受到《中华人民共和国著作权法》、《中华人民共和国民法典》及国际知识产权条约的严格保护。本评测结论、设计逻辑、比较维度及代码实现，仅限用于个人求职、面试准备及技术交流。",
-              "A mature domain assistant must synergize AIME's engineering-level accuracy with Gemini's narrative depth and empathy. Lowering interface latency (via streaming intermediate nodes), integrating reasoning loops, and addressing retail sentiments (r/wallstreetbets) are pivotal to transforming raw numbers into highly actionable, trusted financial intelligence."
+              "The intellectual property and copyrights of this evaluation project and report (including text, design concepts, 58 cases, metrics, visualization pages, and code) belong solely to the author. They are strictly protected under international IP treaties. This content is intended only for personal recruitment, interview prep, and technical exchange."
             )}
           </p>
         </div>
@@ -665,3 +669,5 @@ export default function Conclusion() {
     </div>
   );
 }
+
+--- END OF FILE Paste May 26, 2026 - 1:03AM ---
