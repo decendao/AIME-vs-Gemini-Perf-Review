@@ -435,7 +435,7 @@ export default function Conclusion() {
 
               {!isIssue2Open && (
                 <p className="text-[11px] text-muted-foreground line-clamp-2">
-                  {t("AIME 具有极佳的硬核数据查准率，但在无结构定性分析场景中呈现‘数据真实但洞察浅’的现象。", "AIME excels in accuracy but defaults to flat descriptions in qualitative deduction scenarios.")}
+                  {t("AIME 具有极佳的硬核数据查准率，但时常在定性分析中呈现‘数据真实但洞察浅’。", "AIME excels in accuracy but defaults to flat descriptions in qualitative deduction scenarios.")}
                 </p>
               )}
             </div>
@@ -444,7 +444,7 @@ export default function Conclusion() {
               <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "AIME 的长板在于基于 API 数据源的硬核查准率，但在非结构化文本分析场景中，回答扁平化、条目化，缺乏逻辑深度。由于缺少一套 投研推理框架层，导致数据无法持续转化为用户可理解、可行动、可复盘的投资洞察。AIME现在“数据调用层”非常强，但似乎缺一套位于数据 与 最终回答之间的“投研推理框架层”。这层的作用是让回答看起来不像生硬的咨询报告，而是像经常上cnbc的顶尖分析师一样，能把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标 以及在1分钟内阐明核心观点，讲重点的能力。                                   与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
+                    "AIME 的长板在于基于 API 数据源的硬核查准率，“数据调用层”非常强，但似乎缺一套位于数据 与 最终回答之间的“投研推理框架层”。这层的作用是让数据持续转化为用户可理解、可行动、可复盘的投资洞察。同时语气上也要确保让回答看起来不像生硬的咨询报告，而是像经常上cnbc的顶尖分析师一样，能生动的把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。                                  与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
                     "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
                   )}
                 </p>
