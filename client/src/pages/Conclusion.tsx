@@ -450,7 +450,7 @@ export default function Conclusion() {
                 </p>
                 <div className="bg-rose-50/20 dark:bg-rose-950/10 p-2 rounded-lg border border-rose-100/50 dark:border-rose-950/30">
                   <span className="font-bold text-rose-600 dark:text-rose-400 block mb-0.5">💡 {t("用户痛点", "User Painpoint")}</span>
-                  {t("单纯的财务指标并不能直接形成投资决策。用户需要系统深度剖析商业模式演变、估值分化源头、共识偏误以及可行动的仓位策略。", "Raw multiples are not immediately actionable. Retailers seek comprehensive frameworks detailing structural moats, consensus consensus divergences, and trading actions.")}
+                  {t("单纯的财务指标并不能直接形成投资决策。用户需要系统深度剖析商业模式演变、估值分化源头、共识偏误以及可行动的仓位策略，得到一个“数据 ➔ 假设 ➔ 机制 ➔ 反证 ➔ 情景 ➔ 投资动作”的完整投研链路", "Raw multiples are not immediately actionable. Retailers seek comprehensive frameworks detailing structural moats, consensus consensus divergences, and trading actions.")}
                 </div>
               </div>
             )}
