@@ -242,7 +242,7 @@ export default function Conclusion() {
                   {t("Gemini 拥有压倒性的定性推演优势，得益于：", "Gemini dominates logical reasoning through:")}
                 </p>
                 <ul className="list-disc pl-4 space-y-1">
-                  <li>{t("跨领域的语义重组（Semantic Synthesis），建立不同领域概念之间的隐含联系。", "Semantic Synthesis: Establishes implicit linkages between diverse domain concepts.")}</li>
+                  <li>{t("跨领域的语义重组，建立不同领域概念之间的隐含联系。", "Semantic Synthesis: Establishes implicit linkages between diverse domain concepts.")}</li>
                   <li>{t("Flash 架构极高 TPS 支撑多步任务中 Agent 的自动规划、执行与迭代。", "Agentic focus: Parallel agent layout, high TPS, scoring 83.6% on MCP Atlas benchmark.")}</li>
                   <li>{t("战略模型内化（波特五力，LTV/CAC 等分析框架）。", "Built-in strategic tools: Native implementation of Porter's Five Forces, LTV/CAC, and SWOT frameworks.")}</li>
                 </ul>
@@ -444,7 +444,7 @@ export default function Conclusion() {
               <div className="space-y-3 pt-1 animate-fade-in text-[11px] text-muted-foreground">
                 <p>
                   {t(
-                    "AIME 的长板在于基于 API 数据源的硬核查准率，但在非结构化文本分析场景中，回答扁平化、条目化，缺乏逻辑深度。由于缺少一套 投研推理框架层，导致数据无法持续转化为用户可理解、可行动、可复盘的投资洞察。                                         与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
+                    "AIME 的长板在于基于 API 数据源的硬核查准率，但在非结构化文本分析场景中，回答扁平化、条目化，缺乏逻辑深度。由于缺少一套 投研推理框架层，导致数据无法持续转化为用户可理解、可行动、可复盘的投资洞察。AIME现在“数据调用层”非常强，但似乎缺一套位于数据 与 最终回答之间的“投研推理框架层”。这层的作用是让回答看起来不像生硬的咨询报告，而是像经常上cnbc的顶尖分析师一样，能把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标 以及在1分钟内阐明核心观点，讲重点的能力。                                   与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
                     "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
                   )}
                 </p>
