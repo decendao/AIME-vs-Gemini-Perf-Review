@@ -2,6 +2,9 @@
 
 线上交互式仪表盘：https://www.marcomoney.app/
 
+测评主体：https://www.ainvest.com/
+对比竞品：https://gemini.google.com/app
+
 ---
 感谢贵司给的笔试测评机会。收到任务后我花了整个周末，超过25个小时，牺牲了本安排的娱乐运动活动，确保能够专注做好这个笔试并尽快推进流程，是想用最直接的方式展示我这几个方面：
 
