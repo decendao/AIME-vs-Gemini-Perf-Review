@@ -129,7 +129,7 @@ export default function Conclusion() {
             </div>
 
             {isIssue2Open && (
-              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">理
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 <p>
                   {t(
                     "AIME 的长板在于基于 API 数据源的硬核查准率，“数据调用层”非常强，但数据与最终回答之间的“投研推理框架层”偏弱。这层的作用是让数据持续转化为用户可理解、可行动、可复盘的投资洞察。同时语气上也要确保让回答看起来不像生硬的咨询报告，而是像经常上 CNBC 的顶尖分析师一样，能生动的把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。AIME在定性逻辑推演类别问题中给出的回答过去冗长，逻辑链被完整的的展示给了用户，经常多大10几个部分段落。与之相比，Gemini和其他通用大模型倾向重结论轻 论证 ，满足了大部分用户只想知道 结论的心理。",
