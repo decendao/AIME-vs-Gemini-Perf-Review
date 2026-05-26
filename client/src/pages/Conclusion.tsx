@@ -118,7 +118,7 @@ export default function Conclusion() {
                 {isIssue2Open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
               </div>
               <h3 className="text-sm sm:text-base font-bold text-foreground leading-tight">
-                {t("缺少[从数据到决策]的中间推理层", "Absence of Data-to-Decision Reasoning Framework")}
+                {t("[从数据到决策]的中间推理层过于教条，最终呈现过于冗长和固定", "Absence of Data-to-Decision Reasoning Framework")}
               </h3>
 
               {!isIssue2Open && (
@@ -129,10 +129,10 @@ export default function Conclusion() {
             </div>
 
             {isIssue2Open && (
-              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <div className="space-y-3 pt-1 animate-fade-in text-xs sm:text-sm text-muted-foreground leading-relaxed">理
                 <p>
                   {t(
-                    "AIME 的长板在于基于 API 数据源的硬核查准率，“数据调用层”非常强，但缺一套位于数据与最终回答之间的“投研推理框架层”。这层的作用是让数据持续转化为用户可理解、可行动、可复盘的投资洞察。同时语气上也要确保让回答看起来不像生硬的咨询报告，而是像经常上 CNBC 的顶尖分析师一样，能生动的把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。与之相反，通用大模型表现出‘叙事顺滑但事实不稳’（容易产生逻辑通顺的幻觉式深度）。真正优秀的投研智能体应该将 AIME 的数据真实度与通用大模型的框架推演能力完美结合。",
+                    "AIME 的长板在于基于 API 数据源的硬核查准率，“数据调用层”非常强，但数据与最终回答之间的“投研推理框架层”偏弱。这层的作用是让数据持续转化为用户可理解、可行动、可复盘的投资洞察。同时语气上也要确保让回答看起来不像生硬的咨询报告，而是像经常上 CNBC 的顶尖分析师一样，能生动的把各种数据转化为商业逻辑、可验证的投资假设、可行动的仓位建议、可复盘的跟踪指标。AIME在定性逻辑推演类别问题中给出的回答过去冗长，逻辑链被完整的的展示给了用户，经常多大10几个部分段落。与之相比，Gemini和其他通用大模型倾向重结论轻 论证 ，满足了大部分用户只想知道 结论的心理。",
                     "AIME excels in data precision, but lacks synthesis depth in unstructured analytical scenarios. Conversely, general LLMs present 'coherent narratives with unstable facts'. A mature system should integrate both strengths."
                   )}
                 </p>
